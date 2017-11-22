@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpUserDAO" class="com.tfs.irp.user.dao.impl.IrpUserDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpUserService" class="com.tfs.irp.user.service.impl.IrpUserServiceImpl">
+		<property name="irpUserDAO" ref="irpUserDAO" />
+		<property name="irpUserroleLinkDAO" ref="irpUserroleLinkDAO" />
+		<property name="irpGroupService" ref="irpGroupService" />
+		<property name="irpSiteService" ref="irpSiteService" />
+		<property name="irpChannelService" ref="irpChannelService" />
+		<property name="irpRoleService" ref="irpRoleService" />
+		<property name="irpConfigDAO" ref="irpConfigDAO"></property>
+		<property name="irpUserPrivacyService" ref="irpUserPrivacyService"></property>
+		<property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+		<property name="irpUserValueLinkDAO" ref="irpUserValueLinkDAO" />
+	</bean>
+	<!-- web -->
+	<bean name="loginAction" class="com.tfs.irp.user.web.LoginAction" scope="prototype">
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpUserPrivacyService" ref="irpUserPrivacyService" />
+		<property name="irpGroupService" ref="irpGroupService" />
+		<property name="irpCategoryService" ref="irpCategoryService" />
+		<property name="irpUserMedalService" ref="irpUserMedalService" />
+		<property name="irpMedalService" ref="irpMedalService" />
+		<property name="irpAttachedService" ref="irpAttachedService" />
+		
+	</bean>
+	<bean name="userAction" class="com.tfs.irp.user.web.UserAction"	scope="prototype">
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpGroupService" ref="irpGroupService" />
+		<property name="irpRoleService" ref="irpRoleService" />
+		<property name="irpUserPrivacyService" ref="irpUserPrivacyService" />
+		<property name="irpCategoryService" ref="irpCategoryService" />
+		<property name="irpExpertClassifyLinkService" ref="irpExpertClassifyLinkService" />
+		<property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl" />
+	</bean>
+	<bean name="statisticsAction" class="com.tfs.irp.user.web.StatisticsAction" scope="prototype">
+	   <property name="irpUserService" ref="irpUserService"></property>
+	   <property name="irpLogsService" ref="irpLogsService"></property>
+	   <property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService" />
+	   <property name="irpQuestionService" ref="irpQuestionService"></property>
+	   <property name="irpOpertypeService" ref="irpOpertypeService"></property>
+		<property name="irpTagService" ref="irpTagService" />
+		<property name="irpMicroBlogService" ref="irpMicroBlogService" />
+	</bean>
+	
+	
+</beans>

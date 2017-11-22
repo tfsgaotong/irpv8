@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="asseroomsbDAO" class="com.tfs.irp.asseroomsb.dao.impl.IrpAsseroomsbDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="asseroomsbService" class="com.tfs.irp.asseroomsb.service.impl.IrpAsseroomsbServiceImpl">
+		<property name="asseroomsbDAO" ref="asseroomsbDAO" />
+	</bean>
+	<!-- web -->
+	<bean name="asseroomsbAction" class="com.tfs.irp.asseroomsb.web.IrpAsseroomsbAction" scope="prototype">
+		<property name="asseroomsbService" ref="asseroomsbService" />
+		<property name="asseroomsblinkService" ref="asseroomsblinkService" />
+	</bean>
+	
+</beans>

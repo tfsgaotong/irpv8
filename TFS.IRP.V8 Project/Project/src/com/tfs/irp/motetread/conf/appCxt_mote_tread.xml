@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpMoteTreadDAOImpl" class="com.tfs.irp.motetread.dao.impl.IrpMostTreadDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- service -->
+	<bean id="irpMoteTreadServiceImpl" class="com.tfs.irp.motetread.service.impl.IrpMoteTreadServiceImpl">
+	 <property name="irpMoteTreadDAOImpl" ref="irpMoteTreadDAOImpl"></property>
+	 <property name="irpDocumentDAO" ref="irpDocumentDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean id="irpMoteTreadAction" class="com.tfs.irp.motetread.web.IrpMoteTreadAction" scope="prototype">
+	<property name="irpMoteTreadServiceImpl" ref="irpMoteTreadServiceImpl"></property> 
+	</bean>
+</beans>

@@ -1,0 +1,174 @@
+.main-content {
+    width: 1200px;
+    position: relative;
+    margin:0 auto;
+}
+
+.main-content button {
+    width: 90px;
+    height: 25px;
+    border: none;
+    margin: 18px 0 0 1055px;
+    background-color: #6d9937;
+    color: #fff;
+    font-size: 16px
+}
+
+.main-content .post-info-box {
+    margin-top: 16px;
+    border: 1px solid #e5e5e5
+}
+
+.main-content .post-info-box .post-title-box {
+    clear: both
+}
+
+.main-content .post-info-box .post-title-box .post-num-box {
+    display: inline-block;
+    float: left;
+    width: 183px;
+    height: 52px;
+    background-color: #e5e5e5;
+    text-align: center;
+    line-height: 52px
+}
+
+.main-content .post-info-box .post-title-box .post-num-box .post-view-num
+    {
+    color: #27629a;
+    font-size: 16px;
+    padding-right: 2px;
+    border-right: 1px solid #27629a
+}
+
+.main-content .post-info-box .post-title-box .post-num-box .post-comment-num
+    {
+    color: #27629a;
+    font-size: 16px
+}
+
+.main-content .post-info-box .post-title-box .post-title {
+    box-sizing: border-box;
+    display: inline-block;
+    width: 1015px;
+    height: 52px;
+    line-height: 52px;
+    padding-left: 40px;
+    color: #27629a;
+    font-size: 16px
+}
+
+.main-content .post-info-box .post-content-box {
+    overflow: hidden;
+    border-top: 5px solid #86a4c0;
+    clear: both
+}
+
+.main-content .post-info-box .post-content-box .user-box {
+    display: inline-block;
+    float: left;
+    width: 183px;
+    background-color: #e5e5e5;
+    padding-bottom: 1000px;
+    margin-bottom: -970px
+}
+
+.main-content .post-info-box .post-content-box .user-box .category-name
+    {
+    box-sizing: border-box;
+    width: 169px;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px dotted #ccc;
+    margin: 0 8px;
+    font-size: 16px;
+    color: #27629a;
+    padding-left: 12px
+}
+
+.main-content .post-info-box .post-content-box .user-box .user-info-box img
+    {
+    width: 142px;
+    height: 172px;
+    margin: 31px 20px 25px
+}
+
+.main-content .post-info-box .post-content-box .user-box .user-info-box .user-name
+    {
+    margin-left: 20px
+}
+
+.main-content .post-info-box .post-content-box .content-box {
+    display: inline-block;
+    width: 1015px;
+    box-sizing: border-box;
+    padding: 0 175px 50px 46px
+}
+
+.main-content .post-info-box .post-content-box .content-box .content-date
+    {
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px dotted #ccc;
+    font-size: 14px
+}
+
+.main-content .post-info-box .post-content-box .content-box .content-date img
+    {
+    width: 15px;
+    height: 15px;
+    margin-right: 10px
+}
+
+.main-content .post-info-box .post-content-box .content-box .content-date span
+    {
+    margin-left: 10px;
+    font-size: 12px
+}
+
+.main-content .post-info-box .post-content-box .content-box .content {
+    box-sizing: border-box;
+    padding: 10px 0 20px;
+    font-size: 14px;
+    color: #474747;
+    border-bottom: 1px dotted #ccc
+}
+
+.main-content .comment-box {
+    position: relative
+}
+
+.main-content .comment-box .comment-head {
+    font-size: 16px;
+    color: #27629a;
+    border-bottom: 2px solid #27629a
+}
+
+.main-content .comment-box textarea {
+    position: absolute;
+    left: 50%;
+    margin-top: 50px;
+    margin-left: -400px;
+    width: 800px
+}
+
+.main-content .comment-box button {
+    position: absolute;
+    background-color: #6b9ece;
+    border-radius: 5px;
+    height: 35px;
+    top: 375px;
+    right: 0;
+    margin-bottom: 70px
+}
+
+.page span{
+    color: #999;
+    padding: 2px 8px;
+    border: 1px solid #dbdbdb;
+}
+.page a{
+    color: #999;
+    padding: 2px 8px;
+    border: 1px solid #dbdbdb;
+}

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpSuggestionDAO" class="com.tfs.irp.advice.dao.impl.IrpSuggestionDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpSuggestionService" class="com.tfs.irp.advice.service.impl.IrpSuggestionServiceImpl">
+		<property name="irpSuggestionDAO" ref="irpSuggestionDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean name="irpSuggestionAction" class="com.tfs.irp.advice.web.IrpSuggestionAction" scope="prototype">
+		<property name="irpsuggestionservice" ref="irpSuggestionService"></property>
+	</bean>
+</beans>

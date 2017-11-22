@@ -1,0 +1,98 @@
+/* 内容父盒子 */
+.content {
+    width: 1200px;
+    height: 400px;
+    position: relative;
+    left: 5.5%;
+    padding-top: 3px;
+}
+
+/* 右侧帖子列表父盒子 */
+.content .right-postsList {
+    position: absolute;
+    display: inline-block;
+    left: 245px;
+    width: 955px;
+    margin-left: 3px;
+}
+
+.content .right-postsList .right-postsList-head {
+    font-size: 16px;
+    color: #27629a;
+}
+
+.content .right-postsList .theme {
+    border-bottom: 2px solid #27629a;
+}
+
+.content .right-postsList .autor {
+    position: absolute;
+    left: 700px;
+}
+
+.content .right-postsList .browser {
+    position: absolute;
+    left: 800px;
+}
+
+.content .right-postsList .themelist {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+}
+
+.content .right-postsList .themelist ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.content .right-postsList .themelist ul li {
+    position: relative;
+    height: 50px;
+    line-height: 51px;
+    cursor: pointer;
+    border-bottom: 1px solid #e5e5e5;
+}
+.content .right-postsList .themelist ul li:hover{
+	background-color: #E3FDFD;
+}
+
+
+.content .right-postsList .themelist ul li .title {
+    position: absolute;
+    left: 40px;
+    top:12px;
+    font-size: 15px;
+}
+
+.content .right-postsList .themelist ul li .autorname {
+    position: absolute;
+    left: 700px;
+    top:5px;
+    font-size: 12px;
+}
+
+.content .right-postsList .themelist ul li .date{
+    position: absolute;
+    left: 700px;
+    font-size: 12px;
+    top: 25px;
+}
+
+.content .right-postsList .themelist ul li .browsernum {
+    position: absolute;
+    left: 800px;
+    top:12px;
+    font-size: 12px;
+}
+
+.page span{
+    color: #999;
+    padding: 2px 8px;
+    border: 1px solid #dbdbdb;
+}
+.page a{
+    color: #999;
+    padding: 2px 8px;
+    border: 1px solid #dbdbdb;
+}

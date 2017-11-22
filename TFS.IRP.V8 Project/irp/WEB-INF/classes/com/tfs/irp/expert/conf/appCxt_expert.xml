@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpExpertQuestionDAO" class="com.tfs.irp.expert.dao.impl.IrpExpertQuestionDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpExpertClassifyLinkDAO" class="com.tfs.irp.expert.dao.impl.IrpExpertClassifyLinkDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpExpertQuestionService" class="com.tfs.irp.expert.service.impl.IrpExpertQuestionServiceImpl">
+		<property name="irpExpertQuestionDAO" ref="irpExpertQuestionDAO"/> 
+	</bean>
+	<bean id="irpExpertClassifyLinkService" class="com.tfs.irp.expert.service.impl.IrpExpertClassifyLinkServiceImpl">
+		<property name="irpExpertClassifyLinkDAO" ref="irpExpertClassifyLinkDAO"/> 
+	</bean>
+	<!-- web -->
+	<bean name="irpExpertAction" class="com.tfs.irp.expert.web.ExpertAction" scope="prototype">
+		<property name="irpExpertQuestionService" ref="irpExpertQuestionService"/> 
+		<property name="irpRoleService" ref="irpRoleService"/> 
+		<property name="irpQuestionService" ref="irpQuestionService"/> 
+		<property name="irpUserService" ref="irpUserService"/>
+		<property name="irpMicroBlogService" ref="irpMicroBlogService"/>  
+		<property name="irpMicroblogFocusServiceImpl" ref="irpMicroblogFocusServiceImpl"/> 
+		<property name="irpMessageContentService" ref="irpMessageContentServiceImpl" />
+	</bean> 
+</beans>

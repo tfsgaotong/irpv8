@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:sqlMapping.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<!-- 数据源配制 -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<property name="properties" ref="dataSourceProperties"/>
+		<property name="driverClass" value="${jdbc.driverClassName}" />  
+        <property name="jdbcUrl" value="${jdbc.url}" />  
+        <!-- <property name="user" value="${jdbc.username}" />  
+        <property name="password" value="${jdbc.password}" /> -->
+		<property name="minPoolSize" value="${jdbc.minPoolSize}" />  
+        <property name="maxPoolSize" value="${jdbc.maxPoolSize}" />
+        <property name="initialPoolSize" value="${jdbc.initialPoolSize}" />
+		<property name="maxIdleTime" value="${jdbc.maxIdleTime}" />
+		<property name="acquireIncrement" value="${jdbc.acquireIncrement}"/>
+		
+		<property name="acquireRetryAttempts" value="${jdbc.acquireRetryAttempts}"/>
+		<property name="acquireRetryDelay" value="${jdbc.acquireRetryDelay}"/>
+		<property name="testConnectionOnCheckin" value="${jdbc.testConnectionOnCheckin}"/>
+		<property name="automaticTestTable" value="${jdbc.automaticTestTable}"/>
+		<property name="idleConnectionTestPeriod" value="${jdbc.idleConnectionTestPeriod}"/>
+		<property name="checkoutTimeout" value="${jdbc.checkoutTimeout}"/>
+	</bean>
+	<bean id="dataSourceProperties" class="com.tfs.irp.util.c3p0.PropertiesEncryptFactoryBean">  
+        <property name="properties">  
+            <props>  
+                <prop key="user">${jdbc.username}</prop>  
+                <prop key="password">${jdbc.password}</prop>  
+            </props>  
+        </property>  
+    </bean>  
+	<!-- sqlMapConfig -->
+	<bean id="sqlMapClient" class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="configLocation" value="classpath:ibatis/sqlMapConfig.xml" />
+	</bean>
+	
+	<!-- 定义事务管理器（声明式的事务） -->  
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	<property name="dataSource" ref="dataSource" />
+	</bean>
+	<bean id="transactionInterceptor" class="org.springframework.transaction.interceptor.TransactionInterceptor">  
+        <property name="transactionManager" ref="transactionManager" />  
+        <!-- 配置事务属性 -->  
+        <property name="transactionAttributes">  
+            <props>
+	           <prop key="*">PROPAGATION_REQUIRED,-Exception</prop>
+	    	</props> 
+        </property>  
+    </bean>
+    <bean class="org.springframework.aop.framework.autoproxy.BeanNameAutoProxyCreator">  
+        <property name="beanNames">  
+            <list>
+            	<value>*DAO</value>
+                <value>*Service*</value>
+                <value>*Util*</value>
+            </list>  
+        </property>  
+        <property name="interceptorNames">  
+            <list>  
+                <value>transactionInterceptor</value>  
+            </list>  
+        </property>  
+    </bean>
+    
+    <!-- 加载ApplicationContext到工具类 -->
+    <bean id="getContext" class="com.tfs.irp.util.ApplicationContextHelper" />
+    
+    <!-- 初始化系统配置项 -->
+	<bean name="sysTableidInit" class="com.tfs.irp.util.TableIdUtil" />
+
+	<!-- 管理触发器 (定时任务) -->
+	<bean name="quartzInit" class="com.tfs.irp.util.job.JobListener" />
+	
+	<!-- 初始化系统配置项 -->
+	<bean name="sysconfigInit" class="com.tfs.irp.util.SysConfigUtil" />
+	
+	<!-- 引入扩展配置 -->
+	<import resource="classpath:com/tfs/irp/user/conf/appCxt_user.xml" />
+	<import resource="classpath:com/tfs/irp/tableid/conf/appCxt_tableid.xml" />
+	<import resource="classpath:com/tfs/irp/group/conf/appCxt_group.xml" />
+	<import resource="classpath:com/tfs/irp/opertype/conf/appCxt_opertype.xml" />
+	<import resource="classpath:com/tfs/irp/site/conf/appCxt_site.xml" />
+	<import resource="classpath:com/tfs/irp/logs/conf/appCxt_logs.xml" />
+	<import resource="classpath:com/tfs/irp/logtype/conf/appCxt_logtype.xml" />
+	<import resource="classpath:com/tfs/irp/channel/conf/appCxt_channel.xml" />
+	<import resource="classpath:com/tfs/irp/document/conf/appCxt_document.xml" />
+	<import resource="classpath:com/tfs/irp/chnl_doc_link/conf/appCxt_chnl_doc_link.xml" />
+	<import resource="classpath:com/tfs/irp/role/conf/appCxt_role.xml" />
+	<import resource="classpath:com/tfs/irp/docstatus/conf/appCxt_docstatus.xml" />
+	<import resource="classpath:com/tfs/irp/config/conf/appCxt_config.xml" />
+	<import resource="classpath:com/tfs/irp/right/conf/appCxt_right.xml" />
+	<import resource="classpath:com/tfs/irp/configType/conf/appCxt_configType.xml" />
+	<import resource="classpath:com/tfs/irp/attachedtype/conf/appCxt_attachedtype.xml" />
+	<import resource="classpath:com/tfs/irp/attached/conf/appCxt_attached.xml" />
+	<import resource="classpath:com/tfs/irp/value/conf/appCxt_valueConfig.xml" />
+	<import resource="classpath:com/tfs/irp/microblog/conf/appCxt_microblog.xml" />
+	<import resource="classpath:com/tfs/irp/microblogfocus/conf/appCxt_microblog_focus.xml" />
+	<import resource="classpath:com/tfs/irp/microblogcollection/conf/appCxt_microblog_collection.xml" />
+	<import resource="classpath:com/tfs/irp/file/conf/appCxt_file.xml" />
+	<import resource="classpath:com/tfs/irp/doc_tag/conf/appCxt_docTag.xml" />
+	<import resource="classpath:com/tfs/irp/tag/conf/appCxt_tag.xml" />
+	<import resource="classpath:com/tfs/irp/microblogcomment/conf/appCxt_microblog_comment.xml" />
+	<import resource="classpath:com/tfs/irp/education/conf/appCxt_education.xml" />
+	<import resource="classpath:com/tfs/irp/career/conf/appCxt_career.xml" />
+	<import resource="classpath:com/tfs/irp/docrecommend/conf/appCxt_docRecommend.xml" />
+	<import resource="classpath:com/tfs/irp/documentcollection/conf/appCxt_docconn.xml" />
+	<import resource="classpath:com/tfs/irp/doctransmite/conf/appCxt_doctransmite.xml" />
+	<import resource="classpath:com/tfs/irp/question/conf/appCxt_question.xml" />
+	<import resource="classpath:com/tfs/irp/workflow/conf/appCxt_workflow.xml" />
+	<import resource="classpath:com/tfs/irp/motetread/conf/appCxt_mote_tread.xml" />
+	<import resource="classpath:com/tfs/irp/messagecontent/conf/appCxt_messagecontent.xml" />
+	<import resource="classpath:com/tfs/irp/microblogatme/conf/appCxt_microblog_atme.xml" />
+	<import resource="classpath:com/tfs/irp/expert/conf/appCxt_expert.xml" />
+	<import resource="classpath:com/tfs/irp/solr/conf/appCxt_solr.xml" />
+	<import resource="classpath:com/tfs/irp/project/conf/appCxt_project.xml" />
+	<import resource="classpath:com/tfs/irp/projectperson/conf/appCxt_projectperson.xml" />
+	<import resource="classpath:com/tfs/irp/projectsharetask/conf/appCxt_projectsharetask.xml" />
+	<import resource="classpath:com/tfs/irp/projecttaskperson/conf/appCxt_projecttaskperson.xml" />
+	<import resource="classpath:com/tfs/irp/uservaluelink/conf/appCxt_uservaluelink.xml" />
+	<import resource="classpath:com/tfs/irp/valuesetting/conf/appCxt_valuesetting.xml" />
+	<import resource="classpath:com/tfs/irp/documentread/conf/appCxt_documentreaded.xml" />
+	<import resource="classpath:com/tfs/irp/topic/conf/appCxt_topic.xml" />
+	<import resource="classpath:com/tfs/irp/topiclink/conf/appCxt_topiclink.xml" />
+	<import resource="classpath:com/tfs/irp/userprivacy/conf/appCxt_userprivacy.xml" />
+	<import resource="classpath:com/tfs/irp/selectkey/conf/appCxt_key.xml" />
+	<import resource="classpath:com/tfs/irp/inform/conf/appCxt_inform.xml" />
+	<import resource="classpath:com/tfs/irp/userlove/conf/appCxt_userlove.xml" />
+	<import resource="classpath:com/tfs/irp/informtype/conf/appCxt_informtype.xml" />
+	<import resource="classpath:com/tfs/irp/docscore/conf/appCxt_docscore.xml" />
+	<import resource="classpath:com/tfs/irp/dbupdate/conf/appCxt_dbupdate.xml" />
+	<import resource="classpath:com/tfs/irp/documentmap/conf/appCxt_docmap.xml" />
+	<import resource="classpath:com/tfs/irp/complain/conf/appCxt_complain.xml" />
+	<import resource="classpath:com/tfs/irp/userRandom/conf/appCxt_userRandom.xml" />
+	<import resource="classpath:com/tfs/irp/app/conf/appCxt_app.xml" />
+	<import resource="classpath:com/tfs/irp/apptype/conf/appCxt_apptype.xml" />
+	<import resource="classpath:com/tfs/irp/userapp/conf/appCxt_userapp.xml" />
+	<import resource="classpath:com/tfs/irp/job/conf/appCxt_job.xml" />
+	<import resource="classpath:com/tfs/irp/managementoper/conf/appCxt_managementoper.xml" />
+	<import resource="classpath:com/tfs/irp/vote/conf/appCxt_vote.xml" />
+	<import resource="classpath:com/tfs/irp/voteoptions/conf/appCxt_voteoptons.xml" />
+	<import resource="classpath:com/tfs/irp/voterecords/conf/appCxt_voterecords.xml" />
+	<import resource="classpath:com/tfs/irp/navigation/conf/appCxt_navigation.xml"/>
+	<import resource="classpath:com/tfs/irp/sign/conf/appCxt_sign.xml"/>
+	<import resource="classpath:com/tfs/irp/schedule/conf/appCxt_app.xml"/>
+	<import resource="classpath:com/tfs/irp/category/conf/appCxt_category.xml"/>
+	<import resource="classpath:com/tfs/irp/category_file_link/conf/appCxt_category_file_link.xml"/>
+	<import resource="classpath:com/tfs/irp/term/conf/appCxt_term.xml"/>
+	<import resource="classpath:com/tfs/irp/template/conf/appCxt_template.xml"/>
+	<import resource="classpath:com/tfs/irp/chat/conf/appCxt_chat.xml"/>
+	<import resource="classpath:com/tfs/irp/personalsearch/conf/appCxt_personal_search.xml" />
+	<import resource="classpath:com/tfs/irp/subscribe/conf/appCxt_subscribe.xml" />
+	<import resource="classpath:com/tfs/irp/docversion/conf/appCxt_docversion.xml"/>
+	<import resource="classpath:com/tfs/irp/randar/conf/appCxt_randar.xml" />
+	<import resource="classpath:com/tfs/irp/questionbank/conf/appCxt_questionbank.xml" />
+	<import resource="classpath:com/tfs/irp/testpaper/conf/appCxt_testpaper.xml" />
+	<import resource="classpath:com/tfs/irp/grouptestpaper/conf/appCxt_grouptestpaper.xml" />
+	<import resource="classpath:com/tfs/irp/exam/conf/appCxt_exam.xml" />
+	<import resource="classpath:com/tfs/irp/examanswer/conf/appCxt_examanswer.xml" />
+	<import resource="classpath:com/tfs/irp/examrecord/conf/appCxt_examrecord.xml" />
+	<import resource="classpath:com/tfs/irp/documentlogs/conf/appCxt_documentlogs.xml" />
+	<import resource="classpath:com/tfs/irp/bug/conf/appCxt_bug.xml" />
+	<import resource="classpath:com/tfs/irp/bug_config/conf/appCxt_bug.xml" />
+	<import resource="classpath:com/tfs/irp/asseroomsb/conf/appCxt_asseroomsb.xml" />
+	<import resource="classpath:com/tfs/irp/asseroomsblink/conf/appCxt_asseroomsblink.xml" />
+	<import resource="classpath:com/tfs/irp/asseroom/conf/appCxt_asseroom.xml" />
+	<import resource="classpath:com/tfs/irp/asseroomapply/conf/appCxt_asseroomapply.xml" />
+	<import resource="classpath:com/tfs/irp/asseuser/conf/appCxt_asseuser.xml" />
+	<import resource="classpath:com/tfs/irp/assetype/conf/appCxt_assetype.xml" />
+	<import resource="classpath:com/tfs/irp/assewarn/conf/appCxt_assewarn.xml" />
+	<import resource="classpath:com/tfs/irp/leaveapply/conf/appCxt_leaveapply.xml" />
+	<import resource="classpath:com/tfs/irp/leaveconf/conf/appCxt_leaveconf.xml" />
+	<import resource="classpath:com/tfs/irp/leaveoper/conf/appCxt_leaveoper.xml" />
+	<import resource="classpath:com/tfs/irp/leavechecker/conf/appCxt_leavechecker.xml" />
+	<import resource="classpath:com/tfs/irp/formcolumn/conf/appCxt_formcolumn.xml" />
+	<import resource="classpath:com/tfs/irp/form/conf/appCxt_form.xml" />
+	<import resource="classpath:com/tfs/irp/mobile/conf/appCxt_mobile.xml" />
+	<import resource="classpath:com/tfs/irp/goods/conf/appCxt_goods.xml" />
+	<import resource="classpath:com/tfs/irp/medal/conf/appCxt_medal.xml" />
+	<import resource="classpath:com/tfs/irp/usergoodslink/conf/appCxt_usercovertgoods.xml" />
+	<import resource="classpath:com/tfs/irp/usermedal/conf/appCxt_usermedal.xml" />
+	<import resource="classpath:com/tfs/irp/binding/conf/appCxt_binding.xml" />
+	<import resource="classpath:com/tfs/irp/advice/conf/appCxt_advice.xml" />
+	<import resource="classpath:com/tfs/irp/forum/conf/appCxt_forum.xml" />
+	<import resource="classpath:com/tfs/irp/forumcomment/conf/appCxt_forumcomment.xml" />
+	<import resource="classpath:com/tfs/irp/termeditlog/conf/appCxt_termeditlog.xml" />
+	
+	<!-- 引入CXF配置 -->
+	<import resource="classpath:spring/spring-cxf.xml" />
+
+</beans>

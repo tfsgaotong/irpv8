@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpCategoryDAO" class="com.tfs.irp.category.dao.impl.IrpCategoryDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean id="irpCategoryService" class="com.tfs.irp.category.service.impl.IrpCategoryServiceImpl">
+		<property name="irpCategoryDAO" ref="irpCategoryDAO" />
+		<property name="irpCategoryFileLinkDAO" ref="irpCategoryFileLinkDAO" />
+		<property name="irpExpertClassifyLinkService" ref="irpExpertClassifyLinkService" />
+	</bean>
+	<!-- web -->
+	<bean id="categoryAction" class="com.tfs.irp.category.web.CategoryAction" scope="prototype">
+		<property name="irpCategoryService" ref="irpCategoryService" />
+		<property name="irpExpertClassifyLinkService" ref="irpExpertClassifyLinkService" />
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpTermService" ref="irpTermService"></property>
+		<property name="irpTemplateService" ref="irpTemplateService"></property>
+		<property name="irpQuestionBankService" ref="irpQuestionBankService"></property>
+		<property name="irpTestpaperService" ref="irpTestpaperService"></property>
+		<property name="irpExamService" ref="irpExamService"></property>
+		<property name="irpRoleService" ref="irpRoleService" />
+		<property name="irpQuestionService" ref="irpQuestionService"></property>
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService"/>
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+	</bean>
+</beans>

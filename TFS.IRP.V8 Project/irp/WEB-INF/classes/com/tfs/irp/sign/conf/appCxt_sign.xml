@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="signDao" class="com.tfs.irp.sign.dao.impl.IrpSignInfoDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="signService" class="com.tfs.irp.sign.service.impl.SignServiceImpl">
+		<property name="signDao" ref="signDao" />
+	</bean>
+	<!-- web -->
+	<bean name="signAction" class="com.tfs.irp.sign.web.SignAction" scope="prototype">
+		<property name="signService" ref="signService" />
+		<property name="userService" ref="irpUserService" />
+	</bean>
+	
+</beans>

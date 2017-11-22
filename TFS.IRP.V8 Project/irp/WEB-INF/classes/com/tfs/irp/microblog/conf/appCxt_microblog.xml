@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpMicroBlogDAO" class="com.tfs.irp.microblog.dao.impl.IrpMicroblogDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>	
+	</bean>
+	<!-- serivce -->
+	<bean id="irpMicroBlogService" class="com.tfs.irp.microblog.service.impl.IrpMicroblogServiceImpl">
+	<property name="irpMicroblogDAO" ref="irpMicroBlogDAO"></property>
+	<property name="irpConfigDAO" ref="irpConfigDAO"></property>
+	<property name="irpTopicLinkDAO" ref="irpTopicLinkDAO"></property>
+	<property name="solrService" ref="solrService"></property>
+	</bean>
+	<!-- web -->
+	<bean id="irpMicroblogAction" class="com.tfs.irp.microblog.web.IrpMicroblogAction" scope="prototype"> 
+	 <property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+	 <property name="irpUserService" ref="irpUserService"></property>
+	 <property name="irpMicroblogCommentService" ref="irpMicroblogCommentServiceImpl"></property>
+	 <property name="irpGroupService" ref="irpGroupService"></property>
+	 <property name="irpTopicService" ref="irpTopicService"></property>
+	 <property name="irpTopicLinkService" ref="irpTopicLinkService"></property>
+	 <property name="irpInformTypeService" ref="irpInformTypeService"></property>
+	 <property name="irpMicroblogCollectionKeyService" ref="irpMicroblogCollectionKeyServiceImpl"></property>
+	 <property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+	 <property name="irpInformService" ref="irpInformService" />
+	 <property name="irpUserMedalService" ref="irpUserMedalService" />
+	 <property name="irpMedalService" ref="irpMedalService" />
+	 <property name="irpAttachedService" ref="irpAttachedService" />
+	 
+	</bean>
+	
+</beans>

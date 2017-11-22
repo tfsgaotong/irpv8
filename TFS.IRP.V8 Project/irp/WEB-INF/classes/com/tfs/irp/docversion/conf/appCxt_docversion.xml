@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpDocversionDAO" class="com.tfs.irp.docversion.dao.impl.IrpDocversionDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- service -->
+	<bean id="irpDocversionService" class="com.tfs.irp.docversion.service.impl.IrpDocversionServiceImpl">
+		<property name="irpDocversionDAO" ref="irpDocversionDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean scope="prototype" id="irpDocversionAction" class="com.tfs.irp.docversion.web.IrpDocversionAction" >
+		<property name="irpDocversionService" ref="irpDocversionService"></property>
+	</bean>
+</beans>

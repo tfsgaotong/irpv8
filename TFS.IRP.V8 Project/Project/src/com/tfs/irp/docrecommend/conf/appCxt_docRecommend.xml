@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- dao -->
+  <bean id="irpDocrecommendDAO" class="com.tfs.irp.docrecommend.dao.impl.IrpDocrecommendDAOImpl">
+	 <property name="sqlMapClient"  ref="sqlMapClient"></property>
+  </bean>
+  <!-- service -->
+  <bean id="irpDocrecommendServiceImpl" class="com.tfs.irp.docrecommend.service.impl.IrpDocrecommendServiceImpl">
+    <property name="irpDocrecommendDAO" ref="irpDocrecommendDAO"></property>
+    <property name="irpChnl_Doc_LinkDAO" ref="irpChnl_Doc_LinkDAO"></property> 
+    	<property name="irpDocumentDAO" ref="irpDocumentDAO"></property> 
+    	<property name="irpUserService" ref="irpUserService" />
+  </bean>
+  <!-- web -->
+  <bean id="irpDocrecommendAction" class="com.tfs.irp.docrecommend.web.IrpDocrecommendAction" scope="prototype">
+    <property name="irpDocrecommendServiceImpl" ref="irpDocrecommendServiceImpl"></property>
+    <property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+    <property name="irpDocumentCollectionServiceImpl" ref="irpDocumentCollectionServiceImpl"></property>
+    <property name="irpDocumentService" ref="irpDocumentService" />
+    <property name="irpUserService" ref="irpUserService"></property>
+  </bean>
+	
+</beans>

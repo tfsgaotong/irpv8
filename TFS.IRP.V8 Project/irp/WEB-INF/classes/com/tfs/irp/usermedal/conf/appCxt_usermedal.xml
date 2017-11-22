@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpUserMedalDAO" class="com.tfs.irp.usermedal.dao.impl.IrpUserMedalDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpUserMedalService" class="com.tfs.irp.usermedal.service.impl.IrpUserMedalServiceImpl">
+		<property name="irpUserMedalDAO" ref="irpUserMedalDAO" />
+		<property name="irpMedalDAO" ref="irpMedalDAO" />
+		<property name="irpGoodsService" ref="irpGoodsService" />
+	</bean>
+	<!-- web -->
+	<bean name="userMedalAction" class="com.tfs.irp.usermedal.web.UserMedalAction" scope="prototype">
+		<property name="irpUserMedalService" ref="irpUserMedalService" />
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpMedalService" ref="irpMedalService" />
+		<property name="irpGoodsService" ref="irpGoodsService" />
+		<property name="irpMessageContentService" ref="irpMessageContentServiceImpl"></property>
+	</bean>
+</beans>

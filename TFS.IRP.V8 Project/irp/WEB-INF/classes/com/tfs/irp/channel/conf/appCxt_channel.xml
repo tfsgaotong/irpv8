@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpChannelDAO" class="com.tfs.irp.channel.dao.impl.IrpChannelDAOImpl">
+		 <property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- serivce -->
+	<bean id="irpChannelService" class="com.tfs.irp.channel.service.impl.IrpChannelServiceImpl">
+		<property name="irpChannelDAO" ref="irpChannelDAO"/>
+		<property name="irpOpertypeDAO" ref="irpOpertypeDAO"></property>
+		<property name="irpSiteService" ref="irpSiteService" />
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService" />
+	</bean>
+	<!-- web -->
+	<bean name="channelAction" class="com.tfs.irp.channel.web.ChannelAction" scope="prototype">
+		<property name="irpChannelService" ref="irpChannelService"/>
+		<property name="irpFormService" ref="irpFormService"/>
+		<property name="irpUserFileService" ref="irpUserFileService" />
+		<property name="irpSiteService" ref="irpSiteService"/>
+		<property name="irpWorkFlowService" ref="irpWorkFlowService"/>
+		<property name="irpUserService" ref="irpUserService"/>
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService" />
+		<property name="irpMicroblogService" ref="irpMicroBlogService"></property>
+		<property name="irpUserValueLinkService" ref="irpUserValueLinkService"></property>
+		<property name="irpValueSettingService" ref="irpValueSettingService"></property>
+		<property name="irpPersonalSearchService" ref="irpPersonalSearchService" />
+		<property name="irpFormColumnService" ref="irpFormColumnService" />
+		<property name="irpUserMedalService" ref="irpUserMedalService" />
+		<property name="irpMedalService" ref="irpMedalService" />
+		<property name="irpDocumentService" ref="irpDocumentService" />
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService" />
+		<property name="irpAttachedService" ref="irpAttachedService" />
+		<property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+		<property name="irpCategoryService" ref="irpCategoryService" />
+		<property name="irpExpertClassifyLinkService" ref="irpExpertClassifyLinkService" />
+		<property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+	</bean> 
+	
+</beans>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpOpertypeDAO" class="com.tfs.irp.opertype.dao.impl.IrpOpertypeDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean id="irpOpertypeService" class="com.tfs.irp.opertype.service.impl.IrpOpertypeServiceImpl">
+	<property name="irpOpertypeDAO" ref="irpOpertypeDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean id="opertypeAction" class="com.tfs.irp.opertype.web.OpertypeAction" scope="prototype">
+	<property name="irpOpertypeService" ref="irpOpertypeService"></property>
+	</bean>
+	<bean id="opertype_InsertAction" class="com.tfs.irp.opertype.web.Opertype_InsertAction" scope="prototype">
+	<property name="irpOpertypeService" ref="irpOpertypeService"></property>
+	</bean>
+</beans>

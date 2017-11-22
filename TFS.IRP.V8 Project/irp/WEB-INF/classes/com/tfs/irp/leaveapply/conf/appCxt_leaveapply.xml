@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpLeaveapplyDAO" class="com.tfs.irp.leaveapply.dao.impl.IrpLeaveapplyDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpLeaveapplyService" class="com.tfs.irp.leaveapply.service.impl.IrpLeaveapplyServiceImpl">
+		<property name="irpLeaveapplyDAO" ref="irpLeaveapplyDAO" />
+		<property name="irpUserDAO" ref="irpUserDAO" />
+		<property name="signDao" ref="signDao" />
+		<property name="irpLeaveconfigDAO" ref="irpLeaveconfigDAO" />
+		<property name="irpLeaveoperDAO" ref="irpLeaveoperDAO" />
+		<property name="irpLeaveoperService" ref="irpLeaveoperService" />
+	</bean>
+	
+	<!-- web -->
+	<bean name="irpLeaveapplyAction" class="com.tfs.irp.leaveapply.web.IrpLeaveapplyAction" scope="prototype">
+		<property name="irpLeaveapplyDAO" ref="irpLeaveapplyDAO" />
+		<property name="irpUserroleLinkDAO" ref="irpUserroleLinkDAO" />
+		<property name="irpUserDAO" ref="irpUserDAO" />
+		<property name="irpLeaveapplyService" ref="irpLeaveapplyService" />
+		<property name="irpLeaveconfigService" ref="irpLeaveconfigService" />
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpLeaveoperService" ref="irpLeaveoperService" />
+		<property name="messageService" ref="irpMessageContentServiceImpl"></property>
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService" /> 
+		<property name="irpAttachedService" ref="irpAttachedService" />
+		<property name="irpGroupService" ref="irpGroupService" />
+		<property name="irpCheckerLinkService" ref="irpCheckerLinkService"></property>
+		<property name="assewarnService" ref="assewarnService" />
+	</bean>
+	
+</beans>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpTermDAO" class="com.tfs.irp.term.dao.impl.IrpTermDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>	
+	<!-- service -->
+	<bean id="irpTermService" class="com.tfs.irp.term.service.impl.IrpTermServiceImpl">
+		<property name="irpTermDAO" ref="irpTermDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean id="irpTermAction" class="com.tfs.irp.term.web.IrpTermAction" scope="prototype">
+		<property name="irpTermService" ref="irpTermService"></property>
+		<property name="irpUserService" ref="irpUserService"></property>
+		<property name="irpCategoryService" ref="irpCategoryService"></property>
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService"/>
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+		<property name="irpDocumentService" ref="irpDocumentService" />
+		<property name="irpTermEditLogService" ref="irpTermEditLogService" />
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService" />
+	</bean>
+
+
+</beans>	

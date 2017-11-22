@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="assetypeDAO" class="com.tfs.irp.assetype.dao.impl.IrpAssetypeDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="assetypeService" class="com.tfs.irp.assetype.service.impl.IrpAssetypeServiceImpl">
+		<property name="assetypeDAO" ref="assetypeDAO" />
+	</bean>
+	<!-- web -->
+	<bean name="assetypeAction" class="com.tfs.irp.assetype.web.IrpAssetypeAction" scope="prototype">
+		<property name="assetypeService" ref="assetypeService" />
+	</bean>
+	
+</beans>

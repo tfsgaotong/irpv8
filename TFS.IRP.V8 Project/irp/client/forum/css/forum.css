@@ -1,0 +1,242 @@
+.mainContent {
+    position: relative;
+    width: 1200px;
+    margin:0 auto;
+}
+
+.mainContent .rightContent {
+    position: absolute;
+    left: 245px;
+    display: inline-block;
+    width: 955px
+}
+
+.mainContent .rightContent .category {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 13px 0 0 6px
+}
+
+.mainContent .rightContent .category .category-head {
+    font-size: 16px;
+    border-bottom: 2px solid #00f;
+    color: #00f
+}
+
+.mainContent .rightContent .category button {
+    position: absolute;
+    right: 10px;
+    width: 90px;
+    height: 25px;
+    border: none;
+    background-color: #6d9937;
+    color: #fff;
+    font-size: 14px
+}
+
+.mainContent .rightContent .category .category-content {
+    border: 1px solid #e5e5e5;
+    margin-top: 11px
+}
+
+.mainContent .rightContent .category .category-content ul {
+    list-style: none;
+    padding: 0 14px 0 11px
+}
+
+.mainContent .rightContent .category .category-content ul li {
+    position: relative;
+    height: 44px;
+    border-bottom: 1px dashed #e5e5e5;
+    cursor: pointer
+}
+
+.mainContent .rightContent .category .category-content ul li img {
+    width: 39px;
+    height: 39px;
+    margin-top: 2px
+}
+
+.mainContent .rightContent .category .category-content ul li .category-title
+    {
+    position: absolute;
+    left: 60px;
+    font-size: 14px;
+    color: #97b3f6
+}
+
+.mainContent .rightContent .category .category-content ul li .category-description
+    {
+    position: absolute;
+    left: 60px;
+    top: 20px;
+    font-size: 14px;
+    color: #cdcece
+}
+
+.mainContent .rightContent .category .category-content ul li .postNum {
+    position: absolute;
+    left: 723px;
+    font-size: 12px;
+    color: #cdcece
+}
+
+.mainContent .rightContent .category .category-content ul li .date {
+    position: absolute;
+    left: 723px;
+    top: 20px;
+    font-size: 12px;
+    color: #cdcece
+}
+
+.mainContent .rightContent .forumUser {
+    position: relative;
+    box-sizing: border-box;
+    padding: 13px 0 0 6px
+}
+
+.mainContent .rightContent .forumUser .forumUser-head {
+    font-size: 16px;
+    border-bottom: 2px solid #00f;
+    color: #00f
+}
+
+.mainContent .rightContent .forumUser .forumUser-card {
+    font-size: 0;
+}
+
+.mainContent .rightContent .forumUser .forumUser-card .forumUser-info {
+	display:inline-block;
+    width: 24.43%;
+    height: 200px;
+    margin-top: 7px;
+    margin-right: 5px;
+    box-shadow: 1px 1px 1px #ccc
+}
+
+.mainContent .rightContent .forumUser .forumUser-card .forumUser-info .forumUser-info-head
+    {
+    height: 60px;
+    background-color: #eee
+}
+
+.mainContent .rightContent .forumUser .forumUser-card .forumUser-info .forumUser-info-img
+    {
+    position: relative;
+    height: 140px;
+    background-color: #b8cadb
+}
+
+.mainContent .rightContent .forumUser .forumUser-card .forumUser-info .forumUser-info-img img
+    {
+    position: absolute;
+    left: 50%;
+    top: -50px;
+    margin-left: -50px;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%
+}
+
+.mainContent .rightContent .forumUser .forumUser-card .forumUser-info .forumUser-info-img span
+    {
+    position: absolute;
+    left: 50%;
+    top: 80px;
+    margin-left: -24px
+}
+
+.mainContent .rightContent .newPost {
+    position: relative;
+    box-sizing: border-box;
+    padding: 13px 0 0 6px
+}
+
+.mainContent .rightContent .newPost .newPost-head {
+    font-size: 16px;
+    border-bottom: 2px solid #00f;
+    color: #00f
+}
+
+.mainContent .rightContent .newPost ul {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+
+.mainContent .rightContent .newPost ul li {
+    cursor: pointer;
+    font-size: 0;
+    border-bottom: 1px dashed #ccc;
+}
+
+.mainContent .rightContent .newPost ul li:hover{
+	background-color: #E3FDFD;
+}
+
+.mainContent .rightContent .newPost ul li .post-title {
+    display: inline-block;
+    width: 700px;
+    height: 33px;
+    line-height: 33px;
+    vertical-align: top;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.mainContent .rightContent .newPost ul li .post-viewnum {
+    display: inline-block;
+    height: 33px;
+    line-height: 33px;
+    font-size: 12px
+}
+
+.mainContent .rightContent .hotPost {
+    position: relative;
+    box-sizing: border-box;
+    padding: 13px 0 0 6px;
+}
+
+.mainContent .rightContent .hotPost .hotPost-head {
+    font-size: 16px;
+    border-bottom: 2px solid #00f;
+    color: #00f;
+}
+
+.mainContent .rightContent .hotPost ul {
+    padding: 0;
+    margin: 0;
+    list-style: none
+}
+
+.mainContent .rightContent .hotPost ul li {
+    cursor: pointer;
+    font-size: 0;
+    border-bottom: 1px dashed #ccc;
+}
+
+.mainContent .rightContent .hotPost ul li:hover{
+    background-color: #E3FDFD;
+}
+
+.mainContent .rightContent .hotPost ul li .post-title {
+    display: inline-block;
+    width: 700px;
+    height: 33px;
+    line-height: 33px;
+    vertical-align: top;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap
+}
+
+.mainContent .rightContent .hotPost ul li .post-viewnum {
+    display: inline-block;
+    height: 33px;
+    line-height: 33px;
+    font-size: 12px
+}

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- web -->
+	<bean name="mobileAction" class="com.tfs.irp.mobile.web.mobileAction" scope="prototype">
+		<property name="irpDocumentService" ref="irpDocumentService" />
+		<property name="irpChannelService" ref="irpChannelService" /> 
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService"/>
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpTagService" ref="irpTagService" />
+		<property name="irpUserLoveService" ref="irpUserLoveService" />
+		<property name="irpUserPrivacyService" ref="irpUserPrivacyService"/>
+		<property name="irpSiteService" ref="irpSiteService" />
+		<property name="irpValueConfigService" ref="irpValueConfigServiceImpl" />
+		<property name="irpUserValueLinkService" ref="irpUserValueLinkService" />
+		<property name="irpDocumentLogsService" ref="irpDocumentLogsService" />
+		<property name="irpAttachedService" ref="irpAttachedService"/>
+		<property name="irpInformService" ref="irpInformService"/>
+		<property name="irpDocumentScoreService" ref="irpDocumentScoreService"/>
+		<property name="irpSubscribeService" ref="irpSubscribeService" />
+		<property name="signService" ref="signService" />
+		<property name="projectpersonservice" ref="irpProjectPersonService"/>
+		<property name="projectService" ref="irpProjectService"/>
+		<property name="irpDocrecommendServiceImpl" ref="irpDocrecommendServiceImpl"/>
+		<property name="bugService" ref="bugService" />
+		<property name="userService" ref="irpUserService" />
+		<property name="bugconfigservice" ref="bugConfigService" />
+		<property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+		<property name="irpSelectKeyService" ref="irpSelectKeyService"></property>
+		<property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+		<property name="irpMicroblogCollectionKeyService" ref="irpMicroblogCollectionKeyServiceImpl"></property>
+		<property name="irpInformTypeService" ref="irpInformTypeService"></property>
+		<property name="irpGoodsService" ref="irpGoodsService"></property>
+		<property name="irpUserMedalService" ref="irpUserMedalService"></property>
+		<property name="irpMessageContentService" ref="irpMessageContentServiceImpl"></property>
+		<property name="irpUserCovertGoodsService" ref="irpUserCovertGoodsService"></property>
+		<property name="irpMedalService" ref="irpMedalService"></property>
+		<property name="irpQuestionService" ref="irpQuestionService"/>
+		<property name="irpTermService" ref="irpTermService"></property>
+		<property name="irpVoteService" ref="irpVoteService" />
+		<property name="irpVoteOptionsService" ref="irpVoteOptionsService"></property>
+		<property name="irpWorkFlowService" ref="irpWorkFlowService"></property>
+	</bean>  
+	<bean name="microblogAction" class="com.tfs.irp.mobile.web.microblogAction" scope="prototype">
+		 <property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+		 <property name="irpUserService" ref="irpUserService"></property>
+		 <property name="irpMicroblogCommentService" ref="irpMicroblogCommentServiceImpl"></property>
+		 <property name="irpMicroblogCollectionKeyService" ref="irpMicroblogCollectionKeyServiceImpl"></property>
+		 <property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+		 <property name="irpInformService" ref="irpInformService" />
+		 <property name="irpUserFileService" ref="irpUserFileService" />
+		 <property name="irpChannelService" ref="irpChannelService" />
+		 <property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService" />
+		 <property name="irpDocumentService" ref="irpDocumentService" />
+		 <property name="irpTopicService" ref="irpTopicService"></property>
+		 <property name="irpTopicLinkService" ref="irpTopicLinkService"></property>
+	     <property name="irpInformTypeService" ref="irpInformTypeService"></property>
+	</bean>  
+	<bean name="messageAction" class="com.tfs.irp.mobile.web.messageAction" scope="prototype">
+		<property name="irpMessageContentService" ref="irpMessageContentServiceImpl"></property>
+		<property name="irpMicroblogCommentService" ref="irpMicroblogCommentServiceImpl"></property>
+		<property name="irpMicroblogAtmeKeyService" ref="irpMicroblogAtmeKeyServiceImpl"></property>
+		<property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+		<property name="irpUserService" ref="irpUserService"></property>
+	</bean> 
+	<bean name="easyBugAction" class="com.tfs.irp.mobile.web.easyBugAction" scope="prototype">
+		<property name="bugService" ref="bugService" />
+		<property name="userService" ref="irpUserService" />
+		<property name="projectService" ref="irpProjectService"></property>
+		<property name="projectpersonservice" ref="irpProjectPersonService"></property>
+		<property name="bugconfigservice" ref="bugConfigService" />
+		<property name="irpAttachedService" ref="irpAttachedService" />
+		<property name="messageService" ref="irpMessageContentServiceImpl"></property>
+		<property name="irpProjectService" ref="irpProjectService"></property>
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService" />
+		<property name="irpTagService" ref="irpTagService" />
+	</bean> 
+	<bean id="questionAction" class="com.tfs.irp.mobile.web.questionAction" scope="prototype"> 
+	 	<property name="irpQuestionService" ref="irpQuestionService" />
+	 	<property name="irpRoleService" ref="irpRoleService" />
+	 	<property name="irpUserService" ref="irpUserService" />
+	 	<property name="irpExpertQuestionService" ref="irpExpertQuestionService"></property>
+	 	<property name="irpMoteTreadService" ref="irpMoteTreadServiceImpl" ></property>
+	 	<property name="irpMessageContentService" ref="irpMessageContentServiceImpl" ></property>
+	 	<property name="irpAttachedService" ref="irpAttachedService"></property>
+	 	<property name="irpCategoryFileLinkService" ref="irpCategoryFileLinkService" />
+	 	<property name="irpCategoryService" ref="irpCategoryService" />
+	 	<property name="irpUserroleLinkDAO" ref="irpUserroleLinkDAO" />
+	</bean> 
+	<bean id="leaveApplyAction" class="com.tfs.irp.mobile.web.leaveApplyAction" scope="prototype">
+		<property name="irpUserDAO" ref="irpUserDAO" />
+		<property name="irpLeaveapplyService" ref="irpLeaveapplyService" />
+		<property name="irpLeaveconfigService" ref="irpLeaveconfigService" />
+		<property name="irpLeaveoperService" ref="irpLeaveoperService" />
+	</bean> 
+	<bean id="mobilelogin" class="com.tfs.irp.mobile.web.MobileLogin" scope="prototype">
+		<property name="userservice" ref="irpUserService"></property>
+		<property name="configservice" ref="irpConfigServiceImpl"></property>
+	</bean>
+	<bean name="voteAction" class="com.tfs.irp.mobile.web.voteAction" scope="prototype">
+		<property name="irpVoteService" ref="irpVoteService" />
+		<property name="irpVoteOptionsService" ref="irpVoteOptionsService"></property>
+	    <property name="irpUserService" ref="irpUserService"></property>
+	    <property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+	</bean>
+	
+	
+</beans>

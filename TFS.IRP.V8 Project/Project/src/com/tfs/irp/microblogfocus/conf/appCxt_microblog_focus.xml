@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpMicroblogFocusDAOImpl" class="com.tfs.irp.microblogfocus.dao.impl.IrpMicroblogFocusDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean id="irpMicroblogFocusServiceImpl" class="com.tfs.irp.microblogfocus.service.impl.IrpMicroblogFocusServiceImpl">
+	 <property name="irpMicroblogFocusDAO" ref="irpMicroblogFocusDAOImpl"></property>
+	 <property name="irpUserDAO" ref="irpUserDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean id="irpMicroblogFocusAction" class="com.tfs.irp.microblogfocus.web.IrpMicroblogFocusAction" scope="prototype">
+	<property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+	<property name="irpUserService" ref="irpUserService"></property>
+	<property name="irpMicroblogService" ref="irpMicroBlogService"></property>
+	</bean>
+</beans>

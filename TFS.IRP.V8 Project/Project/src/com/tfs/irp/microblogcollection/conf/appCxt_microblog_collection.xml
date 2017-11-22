@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpMicroblogCollectionDAOImpl" class="com.tfs.irp.microblogcollection.dao.impl.IrpMicroblogCollectionDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpMicroblogCollectionKeyServiceImpl" class="com.tfs.irp.microblogcollection.service.impl.IrpMicroblogCollectionKeyServiceImpl">
+	<property name="irpMicroblogCollectionDAO" ref="irpMicroblogCollectionDAOImpl"></property>
+	</bean>
+	<!-- web -->
+	<bean id="irpMicroblogCollectionKeyAction" class="com.tfs.irp.microblogcollection.web.IrpMicroblogCollectionKeyAction" scope="prototype">
+	<property name="irpMicroblogCollectionKeyService" ref="irpMicroblogCollectionKeyServiceImpl"></property>
+	<property name="irpUserService" ref="irpUserService"></property>
+	</bean>
+	
+</beans>

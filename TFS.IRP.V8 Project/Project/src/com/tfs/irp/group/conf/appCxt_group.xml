@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpGroupDAO" class="com.tfs.irp.group.dao.impl.IrpGroupDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpUsergroupLinkDAO" class="com.tfs.irp.group.dao.impl.IrpUsergroupLinkDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpGroupService" class="com.tfs.irp.group.service.impl.IrpGroupServiceImpl">
+		<property name="irpGroupDAO" ref="irpGroupDAO" />
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpUsergroupLinkDAO" ref="irpUsergroupLinkDAO" />
+	</bean>
+	<!-- web -->
+	<bean name="groupAction" class="com.tfs.irp.group.web.GroupAction" scope="prototype">
+		<property name="irpGroupService" ref="irpGroupService" />
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpUserValueLinkService" ref="irpUserValueLinkService" />
+		<property name="irpValueSettingService" ref="irpValueSettingService" />
+		<property name="irpChatService" ref="irpChatService" />
+		<property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+	</bean>
+</beans>

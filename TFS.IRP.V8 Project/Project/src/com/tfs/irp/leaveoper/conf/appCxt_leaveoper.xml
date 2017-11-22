@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpLeaveoperDAO" class="com.tfs.irp.leaveoper.dao.impl.IrpLeaveoperDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpLeaveoperService" class="com.tfs.irp.leaveoper.service.impl.IrpLeaveoperServiceImpl">
+		<property name="irpLeaveoperDAO" ref="irpLeaveoperDAO" />
+		<property name="irpUserDAO" ref="irpUserDAO" />
+		<property name="signDao" ref="signDao" />
+	</bean>
+	
+	<!-- web -->
+	<bean name="irpLeaveoperAction" class="com.tfs.irp.leaveoper.web.IrpLeaveoperAction" scope="prototype">
+		<property name="irpLeaveoperService" ref="irpLeaveoperService" />
+	</bean>
+	
+</beans>

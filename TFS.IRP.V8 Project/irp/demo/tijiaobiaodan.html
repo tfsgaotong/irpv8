@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<title>创建知识</title>
+<link href="css/normalize.css" rel="stylesheet" type="text/css">
+<link href="css/common.css" rel="stylesheet" type="text/css">
+
+<script src="js/modernizr.custom.js"></script>
+<script src="js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="../editor/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="../editor/applet/ckwordup.js"></script>
+</head>
+
+<body>
+<header class="mainHeader">
+    <nav class="headerNav">
+        <section class="mainBox">
+        	<ul class="labels">
+        		<li><a href="#" target="_blank">首页</a></li>
+        		<li><a href="./zhishiku.html">知识库</a></li>
+        		<li><a href="#" target="_blank">问答</a></li>
+        		<li><a href="#" target="_blank">专家</a></li>
+        		<li><a href="#" target="_blank">百科</a></li>
+        		<li><a href="./weiboshouye.html">微知</a></li>
+        	</ul>
+      		<section class="userControlBar">
+      			<font><a href="./gerenshouye.html">个人空间</a><strong></strong></font>
+      			<span>|</span>
+      			<font><a href="#" target="_blank">管理后台</a></font>
+      			<span>|</span>
+      			<font><em><a href="./gerenshezhi.html">admin</a></em></font>
+      		</section>
+		</section>
+    </nav>
+</header>
+<section class="mainBox">
+<div class="leftBox logoSec"><a href="#" target="_blank"><img src="images/logo.png"/></a></div>
+    <div class="rightBox searchSec">
+    	<div>
+			<input type="search" placeholder="请输入关键词" class="getText" />
+			<input type="submit" value="GO" onclick="location.href='./sousuojieguo.html';" class="sub" />
+		</div>
+		<div class="radios">
+			<input type="radio" id="rad_doc" name="search_type" checked /><label for="rad_doc"><span>知识</span></label>
+			<input type="radio" id="rad_weibo" name="search_type" /><label for="rad_weibo"><span>微知</span></label>
+			<input type="radio" id="rad_question" name="search_type" /><label for="rad_question"><span>问答</span></label>
+			<aside class="keywordsPush">
+				热门搜索：<a href="#" target="_blank">知识</a>
+			</aside>
+		</div>
+    </div>
+    <div class="clear"></div>
+</section>
+<section class="mainBox">
+	<nav class="privateNav">
+    	<dl>
+        	<dt class="leftBox">全部知识分类</dt>
+            <dd class="leftBox navBtns"><a href="#" target="_blank" class="current">知识地图</a><a href="#" target="_blank">知识专题</a></dd>
+            <dd class="clear"></dd>
+        </dl>
+    </nav>
+</section>
+<section class="mainBox">
+	<section class="newForm">
+    	<article class="location"><strong>创建知识（<font>*</font>必须填写项）</strong></article>
+        <div class="area10"></div>
+        <table>
+        	<tr>
+            	<td><input type="text" placeholder="添加标题" class="artTitle" /></td>
+                <td width="20"><font class="must">*</font></td>
+                <td><input type="text" placeholder="添加到" list="column" class="artColumn" /><datalist id="column"><option>栏目一</option><option>栏目二</option></datalist></td>
+                <td width="20"><font class="must">*</font></td>
+            </tr>
+        </table>
+        <div class="area10"></div>
+        <table>
+        	<tr>
+            	<td><input type="text" placeholder="添加标签" class="artTag" /></td>
+                <td width="20"><font class="must">*</font></td>
+            </tr>
+        </table>
+        <div class="area10"></div>
+        <div>
+        	<textarea id="editor" name="editor"></textarea>
+        	<script>
+		    	$(document).ready(function(){
+		    		CKEDITOR.replace('editor',{
+		    			width:850
+					});
+		    	});
+		    </script>
+        </div>
+        <div class="area20"></div>
+        <div class="btns">
+        	<input type="submit" class="btn" value="预&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;览" />
+        	<input type="submit" class="btn" onclick="window.close();" value="保&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存" />
+        	<input type="submit" class="btn" onclick="window.close();" value="关&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;闭" />
+        </div>
+    </section>
+    <section class="layoutRight formInfo">
+    	<div class="area51"></div>
+        <section>
+        	<div class="title">核心提示<font class="must">*</font></div>
+            <textarea placeholder="核心提示"></textarea>
+            <div class="area10"></div>
+            <div class="area10 line"></div>
+        	<div class="title">附件管理</div>
+            <input type="file" class="artFile"/>
+            <div class="area10"></div>
+            <div class="area10 line"></div>
+        	<div class="title">知识分类</div>
+            <input type="text" placeholder="" list="knowledge"/><datalist id="knowledge"><option>分类一</option><option>分类二</option></datalist>
+            <div class="reset"><a href="#">重置</a></div>
+            <div class="area10"></div>
+            <div class="area10 line"></div>
+        	<div class="title">引用到专题</div>
+            <input type="checkbox" class="artCheck"/><span>概念厂</span><input type="checkbox" class="artCheck"/><span>概念厂</span>
+            <div class="reset"><a href="#">重置</a></div>
+            <div class="area10"></div>
+            <div class="area10 line"></div>
+        	<div class="title">知识级别</div>
+            <input type="text" placeholder="" list="level"/><datalist id="level"><option>一</option><option>二</option></datalist>
+        </section>
+        <div class="area20"></div>
+    </section>
+</section>
+<div class="area10"></div>
+<footer><section class="mainBox"><span>北京睿思鸣信息技术有限公司版权所有©1997-2014&nbsp;|&nbsp;</span><a href="#" target="_blank">关于</a>&nbsp;<a href="#" target="_blank">商务合作</a>&nbsp;<a href="#" target="_blank">官方博客</a>&nbsp;<a href="#" target="_blank">官方微知</a>&nbsp;&nbsp;<a href="#" target="_blank" class="apps"><img src="images/icon-07.jpg"/></a></section></footer>
+</body>
+</html>

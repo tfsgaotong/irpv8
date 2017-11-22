@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpSubscribeDAO" class="com.tfs.irp.subscribe.dao.impl.IrpSubscribeDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpSubscribeService" class="com.tfs.irp.subscribe.service.impl.IrpSubscribeServiceImpl">
+		<property name="irpSubscribeDAO" ref="irpSubscribeDAO" />
+		<property name="irpMessageContentService" ref="irpMessageContentServiceImpl" />
+		 <property name="irpChnl_Doc_LinkDAO" ref="irpChnl_Doc_LinkDAO"></property> 
+	</bean>
+	<!-- web -->
+	<bean id="subscribeAction" class="com.tfs.irp.subscribe.web.SubscribeAction" scope="prototype">
+		<property name="irpSubscribeService" ref="irpSubscribeService" />
+		<property name="irpDocumentService" ref="irpDocumentService" />
+	</bean>
+</beans>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- serivce -->
+	<bean id="solrService" class="com.tfs.irp.solr.service.impl.SolrSerivceImpl">
+	</bean>  
+	  
+	<bean id="trsSearchService" class="com.tfs.irp.solr.service.impl.TRSSearchServiceImpl"></bean>
+	
+	<!-- web -->
+	<bean name="solrAction" class="com.tfs.irp.solr.web.SolrAction" scope="prototype">
+		<property name="solrService" ref="solrService"/>
+	    <property name="irpUserService" ref="irpUserService"></property>
+	    <property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+	    <property name="irpMicroblogService" ref="irpMicroBlogService"></property>
+	    <property name="irpSelectKeyService" ref="irpSelectKeyService"></property>
+	    <property name="irpTagService" ref="irpTagService"></property>
+	    <property name="irpChannelService" ref="irpChannelService" />
+	    <property name="irpDocumentService" ref="irpDocumentService" />
+	    <property name="irpQuestionService" ref="irpQuestionService"></property>
+	    <property name="irpPersonalSearchService" ref="irpPersonalSearchService" />
+	    <property name="irpAttachedService" ref="irpAttachedService"></property>
+	    <property name="irpMicroblogCollectionKeyService" ref="irpMicroblogCollectionKeyServiceImpl"></property>
+	</bean> 
+
+	<bean name="trsSearchAction" class="com.tfs.irp.solr.web.TRSsearchAction" scope="prototype">
+	   <property name="trsSearchService" ref="trsSearchService"></property>
+	   <property name="irpUserService" ref="irpUserService"></property>
+	   <property name="irpSelectKeyService" ref="irpSelectKeyService"></property>
+	   <property name="irpTagService" ref="irpTagService"></property>
+	   <property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+	</bean>
+</beans>

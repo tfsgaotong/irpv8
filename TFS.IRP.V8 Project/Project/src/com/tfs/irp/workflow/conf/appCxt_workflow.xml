@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpObjWorkflowLinkDAO" class="com.tfs.irp.workflow.dao.impl.IrpObjWorkflowLinkDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpWorkflowDAO" class="com.tfs.irp.workflow.dao.impl.IrpWorkflowDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpWorkflowEmployDAO" class="com.tfs.irp.workflow.dao.impl.IrpWorkflowEmployDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpWorkflowNodeDAO" class="com.tfs.irp.workflow.dao.impl.IrpWorkflowNodeDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpWorkflowObjDAO" class="com.tfs.irp.workflow.dao.impl.IrpWorkflowObjDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<!-- serivce -->
+	<bean id="irpWorkFlowService" class="com.tfs.irp.workflow.service.impl.IrpWorkFlowServiceImpl">
+		<property name="irpWorkflowDAO" ref="irpWorkflowDAO" />
+		<property name="irpWorkflowNodeDAO" ref="irpWorkflowNodeDAO" />
+		<property name="irpWorkflowEmployDAO" ref="irpWorkflowEmployDAO" />
+		<property name="irpWorkflowObjDAO" ref="irpWorkflowObjDAO" />
+		<property name="irpDocumentService" ref="irpDocumentService" />
+	</bean>
+	<!-- web -->
+	<bean id="workFlowAction" class="com.tfs.irp.workflow.web.WorkFlowAction" scope="prototype">
+		<property name="irpWorkFlowService" ref="irpWorkFlowService" />
+		<property name="irpDocStatusService" ref="irpDocstatusService" />
+		<property name="irpDocumentService" ref="irpDocumentService" />
+		<property name="irpAttachedService" ref="irpAttachedService" />
+		<property name="irpUserService" ref="irpUserService" />
+	</bean>
+</beans>

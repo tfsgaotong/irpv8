@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpCareerDAO" class="com.tfs.irp.career.dao.impl.IrpCareerDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean id="irpCareerService" class="com.tfs.irp.career.service.impl.IrpCareerServiceImpl">
+		<property name="irpCareerDAO" ref="irpCareerDAO" />
+	</bean>
+	<!-- web -->
+	<bean id="careerAction" class="com.tfs.irp.career.web.CareerAction" scope="prototype">
+		<property name="irpCareerService" ref="irpCareerService" />
+	</bean>
+</beans>

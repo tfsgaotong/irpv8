@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- dao -->
+	<bean id="irpForumDAO" class="com.tfs.irp.forum.dao.impl.IrpForumDAOImpl">
+		<constructor-arg name="sqlMapClient" ref="sqlMapClient"></constructor-arg>
+	</bean>
+	
+	<!-- serivce -->
+	<bean id="irpForumService" class="com.tfs.irp.forum.service.impl.IrpForumServiceImpl">
+	   <property name="irpForumDAO" ref="irpForumDAO"></property>
+	</bean>
+	
+	<!-- web -->
+	<bean name="irpForumAction" class="com.tfs.irp.forum.web.IrpForumAction" scope="prototype">
+	   <property name="irpForumService" ref="irpForumService"></property>
+	   <property name="irpUserService" ref="irpUserService"></property>
+	   <property name="irpForumCommentService" ref="irpForumCommentService"></property>
+	   <property name="irpCategoryService" ref="irpCategoryService"></property>
+	   <property name="irpRoleService" ref="irpRoleService" />
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService"/>
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService"></property>
+	</bean>
+</beans>

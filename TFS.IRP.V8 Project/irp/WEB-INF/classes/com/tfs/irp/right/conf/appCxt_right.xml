@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpRightDAO" class="com.tfs.irp.right.dao.impl.IrpRightDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpRightService" class="com.tfs.irp.right.service.impl.IrpRightServiceImpl">
+		<property name="irpRightDAO" ref="irpRightDAO" />
+	</bean>
+	<!-- web -->
+	<bean id="rightAction" class="com.tfs.irp.right.web.RightAction" scope="prototype">
+		<property name="irpRightService" ref="irpRightService" />
+		<property name="irpOpertypeService" ref="irpOpertypeService" />
+		<property name="irpSiteService" ref="irpSiteService" />
+		<property name="irpChannelService" ref="irpChannelService" />
+		<property name="irpManagementOperService" ref="irpManagementOperService" />
+	</bean>
+</beans>

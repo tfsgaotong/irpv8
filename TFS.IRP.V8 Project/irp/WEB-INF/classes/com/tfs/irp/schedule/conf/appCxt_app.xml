@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpScheduleDAO" class="com.tfs.irp.schedule.dao.impl.IrpScheduleDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpScheduleService" class="com.tfs.irp.schedule.service.impl.IrpScheduleServiceImpl">
+		<property name="irpScheduleDAO" ref="irpScheduleDAO"></property>
+	</bean>
+	
+	<bean name="irpScheduleAction" class="com.tfs.irp.schedule.web.IrpScheduleAction" scope="prototype">
+	  <property name="irpScheduleService" ref="irpScheduleService"></property>
+	</bean>
+	
+</beans>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- dao -->
+	<bean id="irpGroupTestpaperDAO" class="com.tfs.irp.grouptestpaper.dao.impl.IrpGroupTestpaperDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpGroupTestpaperService" class="com.tfs.irp.grouptestpaper.service.impl.IrpGroupTestpaperServiceImpl">
+		<property name="irpGroupTestpaperDAO" ref="irpGroupTestpaperDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean name="irpGroupTestpaperAction" class="com.tfs.irp.grouptestpaper.web.IrpGroupTestpaperAction" scope="prototype">
+		<property name="irpGroupTestpaperService" ref="irpGroupTestpaperService"></property>
+	</bean>
+	
+</beans>

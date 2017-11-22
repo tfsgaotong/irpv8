@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpProjectTaskPersonDAO" class="com.tfs.irp.projecttaskperson.dao.impl.IrpProjectTaskPersonDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- service -->
+	<bean id="irpProjectTaskPersonService" class="com.tfs.irp.projecttaskperson.service.impl.IrpProjectTaskPersonServiceImpl">
+		<property name="irpProjectTaskPersonDAO" ref="irpProjectTaskPersonDAO"></property>
+	</bean>
+	<!-- web --> 
+</beans>

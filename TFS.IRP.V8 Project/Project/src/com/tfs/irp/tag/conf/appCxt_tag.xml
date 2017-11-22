@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpTagDAO" class="com.tfs.irp.tag.dao.impl.IrpTagDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpUserTagDAO" class="com.tfs.irp.tag.dao.impl.IrpUserTagDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpTagTypeDAO" class="com.tfs.irp.tag.dao.impl.IrpTagTypeDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	
+	<!-- serivce -->
+	<bean id="irpTagService" class="com.tfs.irp.tag.service.impl.IrpTagServiceImpl">
+		<property name="irpTagDAO" ref="irpTagDAO"/>
+		<property name="irpTagTypeDAO" ref="irpTagTypeDAO"/>
+	</bean>
+	<bean id="irpUserTagService" class="com.tfs.irp.tag.service.impl.IrpUserTagServiceImpl">
+		<property name="irpUserTagDAO" ref="irpUserTagDAO" />
+	</bean>
+	<bean id="irpTagTypeService" class="com.tfs.irp.tag.service.impl.IrpTagTypeServiceImpl">
+		<property name="irpTagTypeDAO" ref="irpTagTypeDAO" />
+	</bean>
+	
+	<!-- web -->
+	<bean id="tagAction" class="com.tfs.irp.tag.web.TagAction" scope="prototype">
+		<property name="irpTagService" ref="irpTagService" />
+		<property name="irpUserTagService" ref="irpUserTagService" />
+		<property name="irpDocumentService" ref="irpDocumentService" />
+		<property name="irpTagTypeService" ref="irpTagTypeService" />
+	</bean>
+</beans>

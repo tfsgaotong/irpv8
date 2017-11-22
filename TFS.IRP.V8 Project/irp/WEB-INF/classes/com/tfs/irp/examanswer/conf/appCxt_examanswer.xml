@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpExamAnswerDAO" class="com.tfs.irp.examanswer.dao.impl.IrpExamAnswerDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean id="irpExamAnswerService" class="com.tfs.irp.examanswer.service.impl.IrpExamAnswerServiceImpl">
+		<property name="irpExamAnswerDAO" ref="irpExamAnswerDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean id="irpExamAnswerAction" class="com.tfs.irp.examanswer.web.IrpExamAnswerAction" scope="prototype">
+		<property name="irpExamAnswerService" ref="irpExamAnswerService"></property>
+	</bean>
+</beans>

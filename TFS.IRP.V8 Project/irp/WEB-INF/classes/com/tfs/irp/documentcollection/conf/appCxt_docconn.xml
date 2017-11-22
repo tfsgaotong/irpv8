@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!-- dao -->
+  <bean id="irpDocumentCollectionDAO" class="com.tfs.irp.documentcollection.dao.impl.IrpDocumentCollectionDAOImpl">
+  	 <property name="sqlMapClient" ref="sqlMapClient"></property>
+  </bean>
+  <!-- service -->
+  <bean id="irpDocumentCollectionServiceImpl" class="com.tfs.irp.documentcollection.service.impl.IrpDocumentCollectionServiceImpl">
+    <property name="irpDocumentCollectionDAO" ref="irpDocumentCollectionDAO"></property>
+    <property name="irpChnl_Doc_LinkDAO" ref="irpChnl_Doc_LinkDAO"></property> 
+    	<property name="irpDocumentDAO" ref="irpDocumentDAO"></property>
+    	<property name="irpUserService" ref="irpUserService" />
+  </bean>
+  <!-- web -->
+  <bean id="irpDocumentCollectionAction" class="com.tfs.irp.documentcollection.web.IrpDocumentCollectionAction" scope="prototype">
+    <property name="irpDocumentCollectionServiceImpl" ref="irpDocumentCollectionServiceImpl"></property>
+    <property name="irpUserService" ref="irpUserService"></property>
+    <property name="irpDocumentService" ref="irpDocumentService"></property>
+  </bean>
+	
+</beans>

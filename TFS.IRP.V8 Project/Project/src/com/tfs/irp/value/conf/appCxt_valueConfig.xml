@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+  <!-- dao -->
+  <bean id="irpValueConfigDAOImpl" class="com.tfs.irp.value.dao.impl.IrpValueConfigDAOImpl">
+  	<property name="sqlMapClient" ref="sqlMapClient" />
+  </bean>
+  <!-- service -->
+  <bean id="irpValueConfigServiceImpl" class="com.tfs.irp.value.service.impl.IrpValueConfigServiceImpl">
+   <property name="irpValueConfigDAO" ref="irpValueConfigDAOImpl"></property>
+  </bean>	
+  <!-- web -->
+  <bean id="irpValueConfigAction" class="com.tfs.irp.value.web.IrpValueConfigAction" scope="prototype">
+   <property name="irpValueConfigService" ref="irpValueConfigServiceImpl"></property>
+  </bean>
+  
+</beans>

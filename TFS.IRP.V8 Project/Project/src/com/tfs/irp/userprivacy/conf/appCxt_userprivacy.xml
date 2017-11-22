@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean name="irpUserPrivacyDAO" class="com.tfs.irp.userprivacy.dao.impl.IrpUserPrivacyDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean name="irpUserPrivacyService"  class="com.tfs.irp.userprivacy.service.impl.IrpUserPrivacyServiceImpl">
+	 <property name="irpUserPrivacyDAO" ref="irpUserPrivacyDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean name="irpUserPrivacyAction" class="com.tfs.irp.userprivacy.web.IrpUserPrivacyAction" scope="prototype">
+	  <property name="irpUserPrivacyService" ref="irpUserPrivacyService"></property>
+	  <property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+	  <property name="irpUserService" ref="irpUserService" />
+	</bean>
+	
+	
+</beans>

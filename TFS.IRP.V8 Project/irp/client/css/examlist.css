@@ -1,0 +1,133 @@
+@CHARSET "UTF-8";
+body{
+	background:none;
+}
+@CHARSET "UTF-8";
+.leftmenu{
+	float: left;
+	width: 245px;
+}
+.leftmenu .title{
+	font-size:15px;
+	height:36px;
+	line-height:36px;
+	color:#2061b0;
+	border-bottom: 2px solid #d1d1d1;
+}
+.leftmenu ul{
+	padding-left:0;
+	margin-top: 0px;
+}
+.leftmenu ul li{
+	list-style:none;
+	margin-top:5px;
+	border-bottom: 1px solid #d1d1d1;
+	margin-top: 16px;
+}
+.leftmenu li:last-child{
+	border:none
+}
+.examlist ul{
+	width:100%;
+	clear:both;
+}
+.examlist ul li{
+	margin-top:15px;
+	list-style: none;
+	margin-bottom: 10px;
+	width:45%;
+	float:left;
+	border-right:1px solid #ccc;
+	margin-left:20px;
+}
+.examlist ul li>div{
+	width:100%;
+	display: inline-block;
+	position: relative;
+	clear:both;
+}
+.examlist ul li:nth-child(2n+0){
+	border:none;
+	margin-left:50px;
+}
+.examimg{
+	width:90px;
+	height:90px;
+	float:left;
+}
+.examimg img{
+	width:90px;
+	height:90px;
+}
+.examinfo{
+	float:left;
+	width:300px;
+	height:120px;
+	padding-left:15px;
+}
+.enterexam{
+	border-radius: 5px;
+	margin-right: 20px;
+	position: absolute;
+	float: right;
+	padding: 6px;
+	text-align: center;
+	line-height: 15px;
+	background-color: #225491;
+	color:#fff;
+	width:150px;
+}
+.leftexamimg{
+	width:50px;
+	height:50px;
+	padding-left: 10px;
+	margin-right:5px;
+	display: inline-block;
+	float: left;
+}
+.leftexamimg img{
+	width:50px;
+	height:50px;
+}
+.leftexaminfo{
+	display: inline-block;
+	font-size:12px;
+	float:left;
+	height:120px;
+}
+.leftenterexam{
+	border-radius: 5px;
+	margin-right: 20px;
+	position: absolute;
+	float: right;
+	padding: 6px;
+	text-align: center;
+	line-height: 15px;
+	background-color: #225491;
+	color:#fff;
+	width:150px;
+}
+.title1{
+	border-bottom: 2px solid #d1d1d1;
+    padding-top: 10px;
+    line-height: 1.5;
+    height:26px;
+    padding-left:0;
+    margin-left:0;
+}
+.title1 a{
+	z-index:999;
+	color: #171717;
+    font-size: 15px;
+    margin-bottom: 5px;
+}
+.clearfix:before{}
+.clearfix:after {       
+    content: ".";     /*内容为“.”就是一个英文的句号而已。也可以不写。*/
+    display: block;   /*加入的这个元素转换为块级元素。*/
+    clear: both;     /*清除左右两边浮动。*/
+    visibility: hidden;      /*可见度设为隐藏。注意它和display:none;是有区别的。visibility:hidden;仍然占据空间，只是看不到而已；*/
+    line-height: 0;    /*行高为0；*/
+    height: 0;     /*高度为0；*/
+    font-size:0;    /*字体大小为0；*/
+}

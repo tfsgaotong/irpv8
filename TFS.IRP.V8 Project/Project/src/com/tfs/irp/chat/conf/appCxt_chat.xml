@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean name="irpChatDAO" class="com.tfs.irp.chat.dao.impl.IrpChatDAOImpl" >
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean name="irpChatService" class="com.tfs.irp.chat.service.impl.IrpChatServiceImpl" >
+		<property name="irpChatDAO" ref="irpChatDAO" />
+	</bean>
+	<!-- action -->
+	<bean name="irpChatAction" class="com.tfs.irp.chat.web.IrpChatAction" scope="prototype" >
+		<property name="irpChatService" ref="irpChatService" />
+		<property name="irpUserService" ref="irpUserService"></property>
+		<property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+		<property name="irpGroupService" ref="irpGroupService"></property>
+		
+	</bean>
+	
+	
+</beans>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpradar" class="com.tfs.irp.randar.dao.impl.IrpRandarDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>  
+	<bean id="irpRandarService" class="com.tfs.irp.randar.service.impl.IrpRandarServiceImpl">
+		<property name="irpradar" ref="irpradar"></property>
+	</bean> 
+	<!-- web -->
+	<bean name="irpRandarAction" class="com.tfs.irp.randar.web.IrpRandarAction" scope="prototype">
+		<property name="irpRandarService" ref="irpRandarService"/>
+	    <property name="irpDocumentService" ref="irpDocumentService" />
+	</bean> 
+ 
+</beans>
+
+
+
+
+
+
+
+

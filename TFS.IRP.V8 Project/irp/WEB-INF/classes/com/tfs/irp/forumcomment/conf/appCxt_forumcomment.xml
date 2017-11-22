@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- dao -->
+	<bean id="irpForumCommentDAO" class="com.tfs.irp.forumcomment.dao.impl.IrpForumCommentDAOImpl">
+		<constructor-arg name="sqlMapClient" ref="sqlMapClient"></constructor-arg>
+	</bean>
+	
+	<!-- serivce -->
+	<bean id="irpForumCommentService" class="com.tfs.irp.forumcomment.service.impl.IrpForumCommentServiceImpl">
+	   <property name="irpForumCommentDAO" ref="irpForumCommentDAO"></property>
+	</bean>
+	
+	<!-- web -->
+	<bean name="irpForumCommentAction" class="com.tfs.irp.forumcomment.web.IrpForumCommentAction" scope="prototype">
+	   <property name="irpForumCommentService" ref="irpForumCommentService"></property>
+	   <property name="irpUserService" ref="irpUserService"></property>
+	   <property name="irpForumService" ref="irpForumService"></property>
+	</bean>
+</beans>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpFormColumnDAO" class="com.tfs.irp.formcolumn.dao.impl.IrpFormColumnDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpFormColumnService" class="com.tfs.irp.formcolumn.service.impl.IrpFormColumnServiceImpl">
+		<property name="irpFormColumnDAO" ref="irpFormColumnDAO" /> 
+		<property name="irpSiteService" ref="irpSiteService" /> 
+		<property name="irpChannelService" ref="irpChannelService" /> 
+	</bean>
+	<!-- web -->
+	<bean name="irpFormColumnAction" class="com.tfs.irp.formcolumn.web.IrpFormColumnAction" scope="prototype">
+		<property name="irpFormColumnService" ref="irpFormColumnService" />
+		<property name="irpFormService" ref="irpFormService" />
+	</bean>
+</beans>

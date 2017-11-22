@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpPersonalSearchDAO" class="com.tfs.irp.personalsearch.dao.impl.IrpPersonalSearchDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean id="irpPersonalSearchService" class="com.tfs.irp.personalsearch.service.impl.IrpPersonalSearchServiceImpl">
+		<property name="irpPersonalSearchDAO" ref="irpPersonalSearchDAO" />
+	</bean>
+	<!-- web -->
+	<bean id="personalSearchAction" class="com.tfs.irp.personalsearch.web.PersonalSearchAction" scope="prototype">
+		<property name="irpPersonalSearchService" ref="irpPersonalSearchService" />
+		<property name="solrService" ref="solrService"/>
+		<property name="irpChannelService" ref="irpChannelService" />
+		<property name="irpUserService" ref="irpUserService" />
+	</bean>
+</beans>

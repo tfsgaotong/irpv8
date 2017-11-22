@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TFS.IRP.V8 Project">
+        <wb-resource deploy-path="/" source-path="/irp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Project/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/Project/configfiles"/>
+        <wb-resource deploy-path="/WEB-INF/lib" source-path="/libs"/>
+        <property name="java-output-path" value="/TFS.IRP.V8 Project/irp/WEB-INF/classes"/>
+        <property name="me-struts-base-pkg"/>
+        <property name="context-root" value="/irp"/>
+    </wb-module>
+</project-modules>

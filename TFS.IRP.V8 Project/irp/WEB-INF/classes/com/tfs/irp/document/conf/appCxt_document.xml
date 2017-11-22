@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpDocumentDAO" class="com.tfs.irp.document.dao.impl.IrpDocumentDAOImpl">
+		 <property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- serivce -->
+	<bean id="irpDocumentService" class="com.tfs.irp.document.service.impl.IrpDocumentServiceImpl">
+		<property name="irpDocumentDAO" ref="irpDocumentDAO"></property>
+		<property name="irpDocumentCollectionDAO" ref="irpDocumentCollectionDAO"></property>
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService"></property>
+	    <property name="irpChannelDAO" ref="irpChannelDAO"></property>
+	    <property name="irpOpertypeDAO" ref="irpOpertypeDAO"></property>
+	    <property name="irpTagDAO" ref="irpTagDAO"/>   
+		<property name="irpDocrecommendDAO" ref="irpDocrecommendDAO"></property>
+		<property name="irpMoteTreadDAOImpl" ref="irpMoteTreadDAOImpl"></property>
+		<property name="irpMicroblogDAO" ref="irpMicroBlogDAO"></property>
+		<property name="irpWorkFlowService" ref="irpWorkFlowService"></property>
+		<property name="irpDocumentMapService" ref="irpDocumentMapService"></property>
+		<property name="irpChnl_Doc_LinkDAO" ref="irpChnl_Doc_LinkDAO"></property>
+		<property name="solrService" ref="solrService"/>
+		<property name="irpDocumentMapDao" ref="irpDocumentMapDao"></property>
+		<property name="irpSubscribeService" ref="irpSubscribeService" />
+	</bean>
+	<!-- web -->
+	<bean name="documentAction" class="com.tfs.irp.document.web.DocumentAction" scope="prototype">
+		<property name="irpDocumentService" ref="irpDocumentService" />
+		<property name="irpSiteService" ref="irpSiteService" />
+		<property name="irpChannelService" ref="irpChannelService" /> 
+		<property name="irpWorkFlowService" ref="irpWorkFlowService"></property>
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService"/>
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService"/>
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpGroupService" ref="irpGroupService" />
+		<property name="irpDocumentReadedService" ref="irpDocumentReadedService"></property>
+		<property name="irpValueSettingService" ref="irpValueSettingService"></property>
+		<property name="irpMicroblogFocusService" ref="irpMicroblogFocusServiceImpl"></property>
+		<property name="irpDocumentScoreService" ref="irpDocumentScoreService"></property>
+		<property name="irpQuestionService" ref="irpQuestionService"></property>
+		<property name="irpInformService" ref="irpInformService"></property>
+		<property name="irpUserPrivacyService" ref="irpUserPrivacyService"></property>
+		<property name="irpDocumentMapService" ref="irpDocumentMapService"></property>
+		<property name="irpDocumentCollectionService" ref="irpDocumentCollectionServiceImpl"></property>
+		<property name="irpLogsService" ref="irpLogsService" />
+		<property name="irpDocversionService" ref="irpDocversionService"></property>
+		<property name="irpSubscribeService" ref="irpSubscribeService" />
+		<property name="irpValueConfigService" ref="irpValueConfigServiceImpl" />
+		<property name="irpUserValueLinkService" ref="irpUserValueLinkService" />
+		<property name="irpTagService" ref="irpTagService" />
+		<property name="irpDocumentLogsService" ref="irpDocumentLogsService" />
+		<property name="irpUserLoveService" ref="irpUserLoveService" />
+		<property name="solrService" ref="solrService"/>
+		<property name="irpRoleService" ref="irpRoleService" />
+		<property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+		<property name="irpMessageContentService" ref="irpMessageContentServiceImpl"></property>
+		<property name="irpCategoryService" ref="irpCategoryService" />
+		<property name="irpDocrecommendServiceImpl" ref="irpDocrecommendServiceImpl"></property>
+	</bean>  
+	<bean name="uploadFileAction" class="com.tfs.irp.document.web.UpLoadAction" scope="prototype"> 
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService"></property>
+	</bean>   
+</beans>

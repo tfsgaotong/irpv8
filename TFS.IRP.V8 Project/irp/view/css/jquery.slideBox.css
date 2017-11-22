@@ -1,0 +1,15 @@
+div.slideBox{ position:relative; width:935px; height:400px; overflow:hidden;}
+div.slideBox ul.items{ position:absolute; float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li{ float:left; background:none; list-style:none; padding:0px; margin:0px;}
+div.slideBox ul.items li a{ position: relative;float:left; line-height:normal !important; padding:0px !important; border:none/*For IE.ADD.JENA.201206300844*/;}
+div.slideBox ul.items li a p{padding-left: 6px;height: 120px;position: absolute;top:275px;width: 580px;font-size: 32px;color: #fff;background: rgba(0,0,0,0.4);}
+div.slideBox ul.items li a img{ margin:0px !important; padding:0px !important; display:block; border:none/*For IE.ADD.JENA.201206300844*/;}
+div.slideBox div.tips{width: 100%; position:absolute; bottom:0px; height:50px;  overflow:hidden;}
+div.slideBox div.tips div.title{ position:absolute; left:0px; top:0px; height:100%;}
+div.slideBox div.tips div.title a{ color:#FFF; font-size:18px; line-height:50px; margin-left:10px; text-decoration:none;}
+div.slideBox div.tips div.title a:hover{ text-decoration:underline !important;}
+div.slideBox div.tips div.nums{ position:absolute; right:0px; top:0px; height:100%;}
+div.slideBox div.tips div.nums a{ display:inline-block; >float:left/*For IE.ADD.JENA.201206300844*/; width:40px; height:4px; background-color:#FFF; text-indent:-99999px; margin:25px 10px 0px 0px;}
+div.slideBox div.tips div.nums a.active{ background-color:#153c94;}
+
+

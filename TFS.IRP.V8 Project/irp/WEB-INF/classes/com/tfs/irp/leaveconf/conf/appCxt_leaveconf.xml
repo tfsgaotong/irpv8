@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpLeaveconfigDAO" class="com.tfs.irp.leaveconf.dao.impl.IrpLeaveconfigDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpLeaveconfigService" class="com.tfs.irp.leaveconf.service.impl.IrpLeaveconfigServiceImpl">
+		<property name="irpLeaveconfigDAO" ref="irpLeaveconfigDAO" />
+	</bean>
+	
+	<!-- web -->
+	<bean name="irpLeaveconfigAction" class="com.tfs.irp.leaveconf.web.IrpLeaveconfigAction" scope="prototype">
+		<property name="irpLeaveconfigService" ref="irpLeaveconfigService" />
+	</bean>
+	
+</beans>

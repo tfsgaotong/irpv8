@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="content-type" content="text/html; charset=gbk">
+<title>${doctitle}</title>
+<style>
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, img, dl, dt, dd, ol, ul, li, form, table { margin:0; padding:0; border:0; list-style:none;}
+div, span, h1, h2, h3, h4, h5, h6, p, a, img, dl, dt, dd, ol, ul, li, form { overflow:hidden;}
+input { margin:0; padding:0; }
+h1,h2,h3,h4,h5,h6 {font-size:12px; font-weight:normal;}  
+a,area{blr:expression(this.onFocus=this.blur())}
+a {text-decoration:none;}
+a:hover {text-decoration:underline;}
+html, body {font-family:Arial, "宋体"; }
+.boxcenter {margin:0 auto;}
+.dt2 {width:677px; font-size:28px; font-family:"黑体"; color:#010101; text-align:center; line-height:34px; }
+.black14 {font-size:14px; color:#000000; }
+.black14 a {font-size:14px; color:#000000; }
+.black14 a:hover {font-size:14px; color:#0b6750; }
+.dbox2 {font-size:12px; color:#7a7a7a; line-height:36px; text-align:center; }
+.dbox3 {width:767px; height:7px;}
+.dbox6 {width:680px; line-height:28px; padding-bottom:30px; }
+.dbox6 img {display:block; margin:15px auto;}
+</style>
+<!--[if IE 6]>
+<script type="text/javascript">
+DD_belatedPNG.fix('div,ul,li,dl,dt,dd,i,a,p,img,body');
+</script>
+<![endif]-->
+</head>
+
+<body>
+<div class="boxcenter">
+	<div class="dt2 boxcenter">${doctitle}</div>
+	<div class="dbox2">发布人：${cruser}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;浏览次数：${hitscount?number}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;发布时间：${docpubtime?string("yyyy-MM-dd HH:mm:ss")} </div>
+	<div class="dbox3 boxcenter"></div>
+	<div class="dbox6 boxcenter black14">
+		${doccontent}
+	</div>
+</div>
+</body>
+</html>

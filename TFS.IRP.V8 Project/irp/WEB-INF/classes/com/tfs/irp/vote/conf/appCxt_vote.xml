@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpVoteDAO" class="com.tfs.irp.vote.dao.impl.IrpVoteDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpVoteService" class="com.tfs.irp.vote.service.impl.IrpVoteServiceImpl">
+	    <property name="irpVoteDAO" ref="irpVoteDAO"></property>
+	    <property name="irpVoteOptionsDAO" ref="irpVoteOptionsDAO"></property>
+	    <property name="irpVoteRecordsDAO" ref="irpVoteRecordsDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean name="irpVoteAction" class="com.tfs.irp.vote.web.IrpVoteAction" scope="prototype">
+		<property name="irpVoteService" ref="irpVoteService" />
+		<property name="irpVoteOptionsService" ref="irpVoteOptionsService"></property>
+	    <property name="irpUserService" ref="irpUserService"></property>
+	    <property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+	</bean>
+	
+	
+	
+</beans>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="TFS.IRP.V8 Project"
+  id="myeclipse.1338112801794"
+  context-root="/irp"
+  j2ee-spec="6.0"
+  archive="TFS.IRP.V8 Project.war">
+  <attributes>
+    <attribute name="webrootdir" value="irp" />
+  </attributes>
+</project-module>
+

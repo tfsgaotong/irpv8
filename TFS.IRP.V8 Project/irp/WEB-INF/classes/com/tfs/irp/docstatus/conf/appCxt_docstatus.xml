@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpDocstatusDAO" class="com.tfs.irp.docstatus.dao.impl.IrpDocstatusDAOImpl">
+		 <property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- serivce -->
+	<bean id="irpDocstatusService" class="com.tfs.irp.docstatus.service.impl.IrpDocStatusServiceImpl">
+		<property name="irpDocstatusDAO" ref="irpDocstatusDAO"/> 
+	</bean>
+	<!-- web -->
+	<bean name="docstatusAction" class="com.tfs.irp.docstatus.web.DocStatusAction" scope="prototype">
+		<property name="irpDocstatusService" ref="irpDocstatusService"/> 
+	</bean> 
+	
+</beans>

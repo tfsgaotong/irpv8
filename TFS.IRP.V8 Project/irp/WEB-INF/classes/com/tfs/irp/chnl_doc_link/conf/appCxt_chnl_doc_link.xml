@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpChnl_Doc_LinkDAO" class="com.tfs.irp.chnl_doc_link.dao.impl.IrpChnlDocLinkDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- serivce -->
+	<bean id="irpChnl_Doc_LinkService" class="com.tfs.irp.chnl_doc_link.service.impl.IrpChnl_Doc_LinkServiceImpl">
+		<property name="irpChnl_Doc_LinkDAO" ref="irpChnl_Doc_LinkDAO"></property>
+		<property name="irpDocumentCollectionDAO" ref="irpDocumentCollectionDAO"></property> 
+		<property name="irpChannelDAO" ref="irpChannelDAO" />
+		<property name="irpSiteService" ref="irpSiteService" />
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+		<property name="irpOpertypeDAO" ref="irpOpertypeDAO"></property>
+		<property name="irpDocumentService" ref="irpDocumentService" />
+		<property name="irpTagDAO" ref="irpTagDAO"/>   
+		<property name="irpSelectKeyService" ref="irpSelectKeyService"></property> 
+		<property name="irpInformService" ref="irpInformService"></property>
+		<property name="solrService" ref="solrService"/>
+		<property name="irpDocStatusService" ref="irpDocstatusService" /> 
+	</bean>
+	<!-- web -->
+	<bean name="chnl_doc_linkAction" class="com.tfs.irp.chnl_doc_link.web.Chnl_Doc_LinkAction" scope="prototype">
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService" />
+		<property name="irpChannelService" ref="irpChannelService" /> 
+		<property name="irpDocStatusService" ref="irpDocstatusService" /> 
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpAttachedService" ref="irpAttachedService" />
+		<property name="irpTagService" ref="irpTagService" />
+		<property name="irpUserLoveService" ref="irpUserLoveService" />
+		<property name="irpRoleService" ref="irpRoleService" />
+		<property name="irpTopicService" ref="irpTopicService" />
+ 		<property name="irpUserPrivacyService" ref="irpUserPrivacyService" />
+		<property name="irpDocumentService" ref="irpDocumentService" />	
+		<property name="irpDocumentMapService" ref="irpDocumentMapService" />
+		<property name="irpSiteService" ref="irpSiteService" />
+		<property name="irpInformService" ref="irpInformService" />
+		<property name="irpInformTypeService" ref="irpInformTypeService" />
+		<property name="solrService" ref="solrService" />
+		<property name="trsSearchService" ref="trsSearchService" />
+		<property name="irpSelectKeyService" ref="irpSelectKeyService" />
+		<property name="irpFormService" ref="irpFormService" />
+		<property name="irpFormColumnService" ref="irpFormColumnService" />
+	</bean>
+	
+	<bean name="docHighChartAction" class="com.tfs.irp.chnl_doc_link.web.DocHighChartAction" scope="prototype">
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService" />
+		<property name="irpDocumentScoreService" ref="irpDocumentScoreService"></property>
+		<property name="irpDocumentService" ref="irpDocumentService"></property>
+		<property name="irpLogsService" ref="irpLogsService"></property>
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpOpertypeService" ref="irpOpertypeService"></property>
+		<property name="irpUserValueLinkService" ref="irpUserValueLinkService"></property>
+		<property name="irpTagService" ref="irpTagService" />
+		<property name="irpMicroBlogService" ref="irpMicroBlogService"></property>
+	</bean> 
+	<bean name="svgImageAction" class="com.tfs.irp.chnl_doc_link.web.SvgImageAction" scope="prototype"></bean>
+</beans>

@@ -1,0 +1,140 @@
+@CHARSET "UTF-8";
+.main{
+	width:1200px;
+}
+body{
+	margin:0;
+	background-color: #fafafa;
+}
+body div{
+	
+	font-size:15px;
+}
+ .header{
+	height:35px;
+	background-color:#225491;
+	color:#fff;
+	text-align:center;
+	line-height:35px;
+}
+ .header .time{
+	float:right;
+	width:145px;
+	color:#fff;
+	height:35px;
+	background-color:none;
+	margin-right:30px;
+}
+#examtimes{
+	line-height:35px;
+}
+.question{
+	height:45px;
+	background-color: #fafafa;
+	border-bottom: 1px solid #ccc;
+	padding-top:35px;
+
+}
+.question_num{
+	height:45px;
+	background-color: #fafafa;
+	border-bottom: 1px solid #ccc;
+}
+.question_detail{
+	width:100%;
+    margin:0 auto;
+    height:45px;
+    line-height: 45px;
+}
+.question_detail>li{
+	margin-left: 20px;
+    list-style: none;
+    float:left;
+    cursor: pointer;
+}
+.question_detail>li a{
+	padding-right: 15px;
+	border-right: 1px solid #000;
+
+}
+.quesiton_list{
+ }
+.title{
+	color:#2679ad;
+	font-weight: bold;
+	height:40px;
+	line-height: 40px;
+	box-shadow:0px 0px  5px 0px #aaa;
+	margin-bottom: 10px;
+	margin-top:20px;
+}
+.title span{
+	margin-left: 15px;
+	padding-top:10px;
+}
+.details .choice_detail{
+    margin:0;
+    padding-left:0;
+}
+.choice_detail>li{
+    list-style: none;
+    background-color: #fff;
+    padding-left:10px;
+    margin-top:20px;
+    border:1px solid #ccc;
+    min-height:550px;
+    box-shadow: 10px 10px 5px #888888;
+    padding:20px;
+    padding-left:30px;
+}
+.pre{
+	position:absolute;
+	left:650px;
+	top:500px;
+	border:1px solid #ccc;
+	display:inline-block;
+	margin-right:15px;
+	padding:5px;
+	border-radius:4px;
+}
+.pre:hover{
+	border:1px solid #225491;
+	background-color:#225491;
+	color:#fff;
+	cursor:pointer;
+}
+.next{
+	position:absolute;
+	left:800px;
+	top:500px;
+	border:1px solid #ccc;
+	display:inline-block;
+	padding:5px;
+	border-radius:4px;
+}
+.next:hover{
+	border:1px solid #225491;
+	background-color:#225491;
+	color:#fff;
+	cursor:pointer;
+}
+.choice_detail>li>ul{
+    padding-bottom: 9px;
+}
+.choice_detail>li>ul>li{
+    list-style: none;
+    margin-top: 10px;
+}
+.details span{
+	margin-top: 6px;
+}
+.Multiselect{
+	
+}
+.choice_detail input[type="text"]{
+	border:1px solid #64b4ff;
+	border-radius:3px;
+	padding:5px 10px;
+	border-r
+	margin:3px;
+}

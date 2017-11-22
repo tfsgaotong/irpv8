@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpRoleDAO" class="com.tfs.irp.role.dao.impl.IrpRoleDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<bean id="irpUserroleLinkDAO" class="com.tfs.irp.role.dao.impl.IrpUserroleLinkDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean name="irpRoleService" class="com.tfs.irp.role.service.impl.IrpRoleServiceImpl" scope="prototype">
+		<property name="irpRoleDAO" ref="irpRoleDAO" />
+		<property name="irpUserroleLinkDAO" ref="irpUserroleLinkDAO" />
+		<property name="irpUserDAO" ref="irpUserDAO" />
+	</bean>
+	<!-- web -->
+	<bean name="roleAction" class="com.tfs.irp.role.web.RoleAction" scope="prototype">
+		<property name="irpRoleService" ref="irpRoleService" />
+		<property name="irpUserService" ref="irpUserService" />
+	</bean>
+</beans>

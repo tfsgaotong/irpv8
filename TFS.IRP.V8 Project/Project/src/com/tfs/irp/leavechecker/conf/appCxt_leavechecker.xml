@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpCheckerLinkDAO" class="com.tfs.irp.leavechecker.dao.impl.IrpCheckerLinkDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpCheckerLinkService" class="com.tfs.irp.leavechecker.service.impl.IrpCheckerLinkServiceImpl">
+		<property name="irpCheckerLinkDAO" ref="irpCheckerLinkDAO"></property>
+	</bean>
+	
+	<!-- web -->
+	<bean name="irpCheckerLinkAction" class="com.tfs.irp.leavechecker.web.IrpCheckerLinkAction" scope="prototype">
+		<property name="irpCheckerLinkService" ref="irpCheckerLinkService"></property>
+	</bean>
+	
+</beans>

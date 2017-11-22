@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpDocumentTransmiteDAO" class="com.tfs.irp.doctransmite.dao.impl.IrpDocumentTransmiteDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- serivce -->
+	<bean id="irpDocumentTransmiteService" class="com.tfs.irp.doctransmite.service.impl.IrpDocumentTransmiteServiceImpl">
+		<property name="irpDocumentDAO" ref="irpDocumentDAO"></property>
+		<property name="irpChnl_Doc_LinkDAO" ref="irpChnl_Doc_LinkDAO"></property>  
+		<property name="irpDocumentTransmiteDAO" ref="irpDocumentTransmiteDAO"></property>  
+ 		  <property name="irpMessageContentService" ref="irpMessageContentServiceImpl"></property>
+	</bean>
+	<!-- web -->
+	<bean name="documentTransmiteAction" class="com.tfs.irp.doctransmite.web.IrpDocumentTransmiteAction" scope="prototype">
+		<property name="irpDocumentTransmiteService" ref="irpDocumentTransmiteService" />
+		<property name="irpGroupService" ref="irpGroupService" /> 
+	</bean>   
+</beans>

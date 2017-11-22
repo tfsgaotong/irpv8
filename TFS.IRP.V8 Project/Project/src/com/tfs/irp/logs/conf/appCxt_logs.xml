@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- dao -->
+	<bean id="irpLogsDAO" class="com.tfs.irp.logs.dao.impl.IrpLogsDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean id="irpLogsService" class="com.tfs.irp.logs.service.impl.IrpLogsServiceImpl">
+	<property name="irpLogsDAO" ref="irpLogsDAO"></property>
+	<property name="irpOpertypeDAO" ref="irpOpertypeDAO"></property>
+	<property name="irpDocumentDAO" ref="irpDocumentDAO"></property>
+	<property name="irpChnlDocLinkDAO" ref="irpChnl_Doc_LinkDAO"></property>
+	<property name="irpTableidDAO" ref="irpTableIdDAO"></property>
+	<property name="irpOpertypeService" ref="irpOpertypeService"></property>
+	</bean>
+	<!-- web  -->
+	<bean id="irpLogsAction" class="com.tfs.irp.logs.web.IrpLogsAction" scope="prototype">
+	<property name="irpLogsService" ref="irpLogsService"></property>
+	</bean>
+	<bean id="irpLogsDetailAction" class="com.tfs.irp.logs.web.IrpLogsDetailAction" scope="prototype">
+	<property name="irpLogsService" ref="irpLogsService"></property>
+	</bean>
+
+	
+	
+	</beans>

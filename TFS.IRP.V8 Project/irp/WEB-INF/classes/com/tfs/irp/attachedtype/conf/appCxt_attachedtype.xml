@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpAttachedTypeDAO" class="com.tfs.irp.attachedtype.dao.impl.IrpAttachedTypeDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- serivce -->
+	<bean id="irpAttachedTypeService" class="com.tfs.irp.attachedtype.service.impl.IrpAttachedServiceImpl">
+		<property name="irpAttachedTypeDAO" ref="irpAttachedTypeDAO"/> 
+	</bean> 
+	<bean id="attachedTypeAction" class="com.tfs.irp.attachedtype.web.IrpAttachedTypeAction" scope="prototype">
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService"></property>
+	</bean>
+</beans>

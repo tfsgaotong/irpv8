@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean name="irpQuestionBankDAO" class="com.tfs.irp.questionbank.dao.impl.IrpQuestionBankDAOImpl" >
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- service -->
+	<bean name="irpQuestionBankService" class="com.tfs.irp.questionbank.service.impl.IrpQuestionBankServiceImpl" >
+		<property name="irpQuestionBankDAO" ref="irpQuestionBankDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean name="irpQuestionBankAction" class="com.tfs.irp.questionbank.web.IrpQuestionBankAction" scope="prototype" >
+		<property name="irpQuestionBankService" ref="irpQuestionBankService"></property>
+		<property name="irpCategoryService" ref="irpCategoryService"></property>
+		<property name="irpUserService" ref="irpUserService"></property>
+		<property name="irpExamAnswerService" ref="irpExamAnswerService"></property>
+		<property name="irpExamRecordService" ref="irpExamRecordService"></property>
+		
+	</bean>
+</beans>	

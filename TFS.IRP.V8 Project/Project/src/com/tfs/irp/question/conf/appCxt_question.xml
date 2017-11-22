@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpQuestionDAO" class="com.tfs.irp.question.dao.impl.IrpQuestionDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpQuestionService" class="com.tfs.irp.question.service.impl.IrpQuestionServiceImpl">
+		<property name="irpQuestionDAO" ref="irpQuestionDAO"></property>
+		<property name="irpExpertQuestionDAO" ref="irpExpertQuestionDAO"></property>
+		
+		<property name="irpAttachedTypeDAO" ref="irpAttachedTypeDAO"></property>
+		<property name="irpAttachedDAO" ref="irpAttachedDAO"></property>
+		<property name="irpExpertQuestionService" ref="irpExpertQuestionService"></property>
+		<property name="irpMessageContentService" ref="irpMessageContentServiceImpl"></property>
+		<property name="solrService" ref="solrService"></property>
+		
+		<property name="irpCategoryDAO" ref="irpCategoryDAO"></property>
+		<property name="irpCategoryFileLinkDAO" ref="irpCategoryFileLinkDAO"></property>
+		<property name="signDao" ref="signDao" />
+		<property name="irpUserroleLinkDAO" ref="irpUserroleLinkDAO" />
+	</bean>
+	<!-- web -->
+	<bean id="irpQuestionAction" class="com.tfs.irp.question.web.IrpQuestionAction" scope="prototype"> 
+	 	<property name="irpQuestionService" ref="irpQuestionService" />
+	 	<property name="irpRoleService" ref="irpRoleService" />
+	 	<property name="irpUserService" ref="irpUserService" />
+	 	<property name="irpExpertQuestionService" ref="irpExpertQuestionService"></property>
+	 	<property name="irpMoteTreadService" ref="irpMoteTreadServiceImpl" ></property>
+	 	<property name="irpMessageContentService" ref="irpMessageContentServiceImpl" ></property>
+	 	<property name="irpAttachedService" ref="irpAttachedService"></property>
+	 	<property name="irpCategoryFileLinkService" ref="irpCategoryFileLinkService" />
+	 	<property name="irpCategoryService" ref="irpCategoryService"></property>
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService"/>
+	</bean>
+	<bean id="statQuestionAction" class="com.tfs.irp.question.web.statQuestionAction" scope="prototype">
+		<property name="irpQuestionService" ref="irpQuestionService"></property>
+	</bean>
+	
+</beans>

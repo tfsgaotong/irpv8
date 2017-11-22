@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpProjectDAO" class="com.tfs.irp.project.dao.impl.IrpProjectDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- service -->
+	<bean id="irpProjectService" class="com.tfs.irp.project.service.impl.IrpProjectServiceImpl">
+		<property name="irpProjectDAO" ref="irpProjectDAO"></property>
+		<property name="irpProjectPersonService" ref="irpProjectPersonService"></property>
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpProjectTaskPersonService" ref="irpProjectTaskPersonService"></property>
+		<property name="irpProjectShareTaskService" ref="irpProjectShareTaskService"></property>
+		<property name="irpTagService" ref="irpTagService"></property>
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService"></property>
+	</bean>
+	<!-- web -->
+	<bean id="projectAction" class="com.tfs.irp.project.web.ProjectAction" scope="prototype">
+		<property name="irpProjectService" ref="irpProjectService"></property>
+		<property name="irpProjectPersonService" ref="irpProjectPersonService"></property>
+		<property name="irpUserService" ref="irpUserService"></property> 
+		<property name="irpInformTypeService" ref="irpInformTypeService" ></property>
+		<property name="irpChnl_Doc_LinkService" ref="irpChnl_Doc_LinkService"></property>
+		<property name="irpUserLoveService" ref="irpUserLoveService"></property>
+		<property name="irpDocumentMapService" ref="irpDocumentMapService"></property>
+		<property name="irpProjectShareTaskService" ref="irpProjectShareTaskService"></property>
+		<property name="irpProjectTaskPersonService" ref="irpProjectTaskPersonService"></property>
+		<property name="irpChannelService" ref="irpChannelService"/>
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+		<property name="irpDocumentService" ref="irpDocumentService" />
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService" />
+	</bean> 
+</beans>

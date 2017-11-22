@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<!-- dao -->
+  <bean id="irpDbupdateDAO" class="com.tfs.irp.dbupdate.dao.impl.IrpDbupdateDAOImpl">
+  	<property name="sqlMapClient" ref="sqlMapClient" />
+  </bean>
+  <!-- service -->
+  <bean id="irpDbupdateService" class="com.tfs.irp.dbupdate.service.impl.IrpDbupdateServiceImpl">
+   <property name="irpDbupdateDAO" ref="irpDbupdateDAO"></property>
+  </bean>
+  <!-- web -->
+  <bean id="irpDbupdateAction" class="com.tfs.irp.dbupdate.web.IrpDbupdateAction" scope="prototype">
+   <property name="irpDbupdateService" ref="irpDbupdateService"></property>
+  </bean>
+  
+</beans>

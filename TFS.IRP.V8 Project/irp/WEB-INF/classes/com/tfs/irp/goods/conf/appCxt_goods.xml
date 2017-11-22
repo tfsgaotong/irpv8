@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpGoodsDAO" class="com.tfs.irp.goods.dao.impl.IrpGoodsDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="irpGoodsService" class="com.tfs.irp.goods.service.impl.IrpGoodsServiceImpl">
+		<property name="irpGoodsDAO" ref="irpGoodsDAO" />
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpUserValueLinkService" ref="irpUserValueLinkService" />
+		<property name="irpUserMedalService" ref="irpUserMedalService" />
+		<property name="irpMedalService" ref="irpMedalService" />
+	</bean>
+	<!-- web -->
+	<bean name="goodsAction" class="com.tfs.irp.goods.web.GoodsAction" scope="prototype">
+		<property name="irpGoodsService" ref="irpGoodsService" />
+		<property name="irpDocumentService" ref="irpDocumentService" />
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService" />
+		<property name="irpAttachedService" ref="irpAttachedService" />
+		<property name="irpMedalService" ref="irpMedalService" />
+		<property name="irpUserCovertGoodsService" ref="irpUserCovertGoodsService" />
+	</bean>
+</beans>

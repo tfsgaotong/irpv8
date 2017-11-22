@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpEducationDAO" class="com.tfs.irp.education.dao.impl.IrpEducationDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean id="irpEducationService" class="com.tfs.irp.education.service.impl.IrpEducationServiceImpl">
+		<property name="irpEducationDAO" ref="irpEducationDAO" />
+	</bean>
+	<!-- web -->
+	<bean id="educationAction" class="com.tfs.irp.education.web.EducationAction" scope="prototype">
+		<property name="irpEducationService" ref="irpEducationService" />
+	</bean>
+</beans>

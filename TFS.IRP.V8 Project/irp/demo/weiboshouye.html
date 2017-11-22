@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="utf-8">
+<title>微知</title>
+<link href="css/normalize.css" rel="stylesheet" type="text/css">
+<link href="css/common.css" rel="stylesheet" type="text/css">
+
+<script src="js/modernizr.custom.js"></script>
+<script src="js/jquery-1.8.0.min.js"></script>
+</head>
+
+<body>
+<header class="mainHeader">
+    <nav class="headerNav">
+        <section class="mainBox">
+        	<ul class="labels">
+        		<li><a href="#" target="_blank">首页</a></li>
+        		<li><a href="./zhishiku.html">知识库</a></li>
+        		<li><a href="#" target="_blank">问答</a></li>
+        		<li><a href="#" target="_blank">专家</a></li>
+        		<li><a href="#" target="_blank">百科</a></li>
+        		<li><a href="./weiboshouye.html">微知</a></li>
+        	</ul>
+      		<section class="userControlBar">
+      			<font><a href="./gerenshouye.html">个人空间</a><strong></strong></font>
+      			<span>|</span>
+      			<font><a href="#" target="_blank">管理后台</a></font>
+      			<span>|</span>
+      			<font><em><a href="./gerenshezhi.html">admin</a></em></font>
+      		</section>
+		</section>
+    </nav>
+</header>
+<section class="mainBox">
+<div class="leftBox logoSec"><a href="#" target="_blank"><img src="images/logo.png"/></a></div>
+    <div class="rightBox searchSec">
+    	<div>
+			<input type="search" placeholder="请输入关键词" class="getText" />
+			<input type="submit" value="GO" onclick="location.href='./sousuojieguo.html';" class="sub" />
+		</div>
+		<div class="radios">
+			<input type="radio" id="rad_doc" name="search_type" checked /><label for="rad_doc"><span>知识</span></label>
+			<input type="radio" id="rad_weibo" name="search_type" /><label for="rad_weibo"><span>微知</span></label>
+			<input type="radio" id="rad_question" name="search_type" /><label for="rad_question"><span>问答</span></label>
+			<aside class="keywordsPush">
+				热门搜索：<a href="#" target="_blank">知识</a>
+			</aside>
+		</div>
+    </div>
+    <div class="clear"></div>
+</section>
+<section class="mainBox">
+	<nav class="publicNav">
+		<a href="#" target="_blank" class="current">首页</a><a href="#" target="_blank">知识库</a><a href="#" target="_blank">问答</a><a href="#" target="_blank">专家</a><a href="#" target="_blank">百科</a><a href="#" target="_blank">微知</a>
+    </nav>
+</section>
+<section class="mainBox">
+	<section class="weibo">
+    	<div class="area20"></div>
+    	<!--微知用输入框-->
+        <div class="maintext">
+        	<textarea></textarea>
+            <section class="textCount">您还可以输入<font>240</font>字</section><aside class="sub"><a href="#" id="text"><span>文字</span></a><a href="#" id="photo"><span>照片</span></a><a href="#" id="music"><span>音乐</span></a><a href="#" id="video"><span>视频</span></a><input type="submit" value="发&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;布"/></aside>
+            <div class="clear"></div>
+        </div>
+        <!--微知输入框结束-->
+        <!--<div class="screening">
+        	<div class="checkOn">筛选</div>
+            <div class="hidden"><div class="tags"><a href="#" target="_blank">所有</a> <a href="#" target="_blank">关注/粉丝</a> <a href="#" target="_blank">我回答的</a> <a href="#" target="_blank">我提问的</a> <a href="#" target="_blank">我的投稿</a> <a href="#" target="_blank">图片中心</a> <a href="#" target="_blank">默认</a></div></div>
+            <script>
+					$(document).ready(function(){
+						$(".checkOn").click(function(){
+							$(".hidden").slideToggle();
+						  });
+					});
+				</script>
+      	</div>-->
+        <div class="area20"></div>
+      	<section class="discussions">
+            <div class="labs">
+            	<dl>
+                	<dt><a href="#" target="_blank"><img src="images/user2.jpg"/></a></dt>
+                    <dd class="text">
+                    	<div class="user"><a href="#" target="_blank">guest</a><aside><span>2014-08-23 16:30 </span><span>来自网页</span><a href="#">举报</a></aside></div>
+                        <p>test</p>
+                        <article class="quote">
+                            <p>test<a href="#" target="_blank">#话题#</a></p>
+							<div class="shareInfo"><span>2014-08-23 16:30 </span><span>来自网页</span><aside><a href="#">原文转发(10)</a><a href="#">原文评论(10)</a></aside></div>
+                        </article>
+                        <div class="share"><span>TAG：</span><a href="#">随拍</a><aside><a href="#" target="_blank">热度(14)</a><a href="#" target="_blank">评论(10)</a><a href="#" target="_blank">分享</a><a href="#" target="_blank">推荐</a></aside></div>
+                    </dd>
+                    <dd class="clear"></dd>
+                </dl>
+            </div>
+            <div class="labs">
+            	<dl>
+                	<dt><a href="#" target="_blank"><img src="images/user2.jpg"/></a></dt>
+                    <dd class="text">
+                    	<div class="user"><a href="#" target="_blank">guest</a><aside><span>2014-08-23 16:30 </span><span>来自网页</span><a href="#">举报</a></aside></div>
+
+                        <p>test</p>
+                        <div class="share"><aside><a href="#" target="_blank">热度(14)</a><a href="#" target="_blank">评论(10)</a><a href="#" target="_blank">分享</a><a href="#" target="_blank">推荐</a></aside></div>
+                    </dd>
+                    <dd class="clear"></dd>
+                </dl>
+            </div>
+        </section>
+    </section>
+	<script>
+    	$(document).ready(function(){
+			$(".infomation").height($(".weibo").height());
+			});
+		
+    </script>
+	<aside class="infomation">
+    	<div class="userInfo">
+        	<dl class="info">
+           	  	<dt class="leftBox"><a href="#" target="_blank"><img src="images/user2.jpg"/></a></dt>
+                <dd class="leftBox"><p><a href="#" target="_blank">无形雨</a></p><p>邮箱：<em>han.weiliang@gmail.com</em></p><p>地区：<em>北京， 市辖区，东城区 </em></p></dd>
+                <dd class="clear"></dd>
+            </dl>
+        </div>
+        <div class="title">关注了<em>26个专栏</em></div>
+        <ul class="tagList">
+        	<li><a href="#" target="_blank"><img src="images/user2.jpg"/></a></li><li><a href="#" target="_blank"><img src="images/user2.jpg"/></a></li><li><a href="#" target="_blank"><img src="images/user2.jpg"/></a></li><li><a href="#" target="_blank"><img src="images/user2.jpg"/></a></li>
+        </ul>
+        <div class="area10"></div>
+        <div class="title">关注了<em>37个话题</em></div>
+        <ul class="tagList">
+        	<li><a href="#" target="_blank"><img src="images/user2.jpg"/></a></li><li><a href="#" target="_blank"><img src="images/user2.jpg"/></a></li><li><a href="#" target="_blank"><img src="images/user2.jpg"/></a></li><li><a href="#" target="_blank"><img src="images/user2.jpg"/></a></li>
+        </ul>
+        <div class="area10"></div>
+    </aside>
+</section>
+
+
+
+<div class="area10"></div>
+<footer><section class="mainBox"><span>北京睿思鸣信息技术有限公司版权所有©1997-2014&nbsp;|&nbsp;</span><a href="#" target="_blank">关于</a>&nbsp;<a href="#" target="_blank">商务合作</a>&nbsp;<a href="#" target="_blank">官方博客</a>&nbsp;<a href="#" target="_blank">官方微知</a>&nbsp;&nbsp;<a href="#" target="_blank" class="apps"><img src="images/icon-07.jpg"/></a></section></footer>
+</body>
+</html>

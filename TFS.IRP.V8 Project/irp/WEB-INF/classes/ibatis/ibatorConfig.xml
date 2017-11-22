@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ibatorConfiguration PUBLIC "-//Apache Software Foundation//DTD Apache iBATIS Ibator Configuration 1.0//EN" 
+"http://ibatis.apache.org/dtd/ibator-config_1_0.dtd" >
+<!-- ibatis实体快速生成工具 -->
+<ibatorConfiguration>
+	<!-- 数据库链接jar 填写本地绝对地址 -->
+	<classPathEntry location="D:/myeclipseWorkspace/TFS.IRP.V8 Project/libs/ojdbc5.jar" />
+	<ibatorContext id="context1" targetRuntime="Ibatis2Java5">
+		<jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+			connectionURL="jdbc:oracle:thin:@127.0.0.1:1521:orcl" 
+			userId="TFS_BASE"
+			password="TFS_BASE">
+		</jdbcConnection>
+		<!-- 实体类生成配置 -->
+		<javaModelGenerator targetPackage="com.tfs.irp.forumcateid.entity"
+			targetProject="TFS.IRP.V8 Project/Project/src" />
+		<!-- SqlMap生成配置 -->
+		<sqlMapGenerator targetPackage="com.tfs.irp.forumcateid.conf"
+			targetProject="TFS.IRP.V8 Project/Project/src" />
+		<!-- DAO生成配置 -->
+		<daoGenerator targetPackage="com.tfs.irp.forumcateid.dao"
+			targetProject="TFS.IRP.V8 Project/Project/src" type="GENERIC-CI" />
+		<!-- 数据库Table名 -->
+		<table tableName="IRP_FORUM_CATEID"></table>
+	</ibatorContext>
+</ibatorConfiguration>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpProjectShareTaskDAO" class="com.tfs.irp.projectsharetask.dao.impl.IrpProjectShareTaskDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient"></property>
+	</bean>
+	<!-- service -->
+	<bean id="irpProjectShareTaskService" class="com.tfs.irp.projectsharetask.service.impl.IrpProjectShareTaskServiceImpl">
+		<property name="irpProjectShareTaskDAO" ref="irpProjectShareTaskDAO"></property> 
+		<property name="irpProjectTaskPersonService" ref="irpProjectTaskPersonService"></property> 
+		<property name="irpAttachedService" ref="irpAttachedService"></property>
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService"></property>
+	</bean>
+	<!-- web --> 
+	<bean id="projectShareTaskAction" class="com.tfs.irp.projectsharetask.web.IrpProjectShareTaskAction" scope="prototype">
+		<property name="irpProjectShareTaskService" ref="irpProjectShareTaskService"></property>
+		<property name="irpUserService" ref="irpUserService"></property> 
+		<property name="irpProjectTaskPersonService" ref="irpProjectTaskPersonService"></property>
+		<property name="irpProjectService" ref="irpProjectService"></property>
+	</bean>
+</beans>

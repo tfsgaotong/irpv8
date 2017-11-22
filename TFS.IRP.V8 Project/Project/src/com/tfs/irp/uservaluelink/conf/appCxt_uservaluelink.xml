@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpUserValueLinkDAO" class="com.tfs.irp.uservaluelink.dao.impl.IrpUserValueLinkDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+     <bean id="irpUserValueLinkService" class="com.tfs.irp.uservaluelink.service.impl.IrpUserValueLinkServiceImpl">
+       <property name="irpUserValueLinkDAO" ref="irpUserValueLinkDAO"></property>
+       <property name="irpLeaveapplyDAO" ref="irpLeaveapplyDAO" />
+     </bean>
+     <!-- web -->
+     <bean id="irpUserValueLinkAction" class="com.tfs.irp.uservaluelink.web.IrpUserValueLinkAction" scope="prototype">
+      <property name="irpUserValueLinkService" ref="irpUserValueLinkService"></property>
+      <property name="irpUserService" ref="irpUserService"></property>
+      <property name="irpValueSettingService" ref="irpValueSettingService"></property>
+      <property name="irpValueConfigService" ref="irpValueConfigServiceImpl"></property>
+     </bean>
+	
+	
+	
+</beans>	

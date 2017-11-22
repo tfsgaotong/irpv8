@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="asseroomapplyDAO" class="com.tfs.irp.asseroomapply.dao.impl.IrpAsseroomapplyDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="asseroomapplyService" class="com.tfs.irp.asseroomapply.service.impl.IrpAsseroomapplyServiceImpl">
+		<property name="asseroomapplyDAO" ref="asseroomapplyDAO" />
+	</bean>
+	<!-- web -->
+	<bean name="asseroomapplyAction" class="com.tfs.irp.asseroomapply.web.IrpAsseroomapplyAction" scope="prototype">
+		<property name="asseroomapplyService" ref="asseroomapplyService" />
+		<property name="assetypeService" ref="assetypeService" />
+		<property name="asseuserService" ref="asseuserService" />
+		<property name="assewarnService" ref="assewarnService" />
+		<property name="asseroomService" ref="asseroomService" />
+		<property name="irpUserService" ref="irpUserService" />
+		<property name="irpMessageContentService" ref="irpMessageContentServiceImpl" />
+		<property name="irpAttachedTypeService" ref="irpAttachedTypeService" /> 
+		<property name="irpAttachedService" ref="irpAttachedService" />
+		<property name="asseroomsblinkService" ref="asseroomsblinkService" /> 
+		<property name="asseroomsbService" ref="asseroomsbService" />
+		<property name="irpGroupService" ref="irpGroupService" />
+	</bean>
+	
+</beans>

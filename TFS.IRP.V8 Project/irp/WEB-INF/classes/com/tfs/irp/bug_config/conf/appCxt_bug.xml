@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="bugConfigDao" class="com.tfs.irp.bug_config.dao.impl.IrpBugConfigDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- serivce -->
+	<bean id="bugConfigService" class="com.tfs.irp.bug_config.service.impl.BugConfigServiceImpl">
+		<property name="bugconfigdao" ref="bugConfigDao" />
+	</bean>
+	<!-- web -->
+	<bean name="bugConfigAction" class="com.tfs.irp.bug_config.web.BugConfigAction" scope="prototype">
+		<property name="bugconfigservice" ref="bugConfigService" />
+		<property name="bugservice" ref="bugService" />
+	</bean>
+	
+</beans>

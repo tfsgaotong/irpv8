@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	<!-- dao -->
+	<bean id="irpExamRecordDAO" class="com.tfs.irp.examrecord.dao.impl.IrpExamRecordDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+	<bean id="irpExamRecordService" class="com.tfs.irp.examrecord.service.impl.IrpExamRecordServiceImpl">
+		  <property name="irpExamRecordDAO" ref="irpExamRecordDAO"></property>
+	</bean>
+	<!-- web -->
+	<bean id="irpExamRecordAction" class="com.tfs.irp.examrecord.web.IrpExamRecordAction" scope="prototype">
+		<property name="irpExamRecordService" ref="irpExamRecordService"></property>
+		<property name="irpExamService" ref="irpExamService"></property>
+		<property name="irpUserService" ref="irpUserService"></property>
+		<property name="irpTestpaperService" ref="irpTestpaperService"></property>
+		<property name="irpCategoryService" ref="irpCategoryService"></property>
+	</bean>
+</beans>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- dao -->
+	<bean id="irpUserrandomDAO" class="com.tfs.irp.userRandom.dao.impl.IrpUserrandomDAOImpl">
+		<property name="sqlMapClient" ref="sqlMapClient" />
+	</bean>
+	<!-- service -->
+     <bean id="IrpUserRandomService" class="com.tfs.irp.userRandom.service.impl.IrpUserRandomServiceImpl">
+       <property name="irpUserrandomDAO" ref="irpUserrandomDAO"></property>
+     </bean>
+     <bean id="IrpUserService" class="com.tfs.irp.user.service.impl.IrpUserServiceImpl">
+       <property name="irpUserDAO" ref="irpUserDAO"></property>
+     </bean>
+     <!-- web -->
+     <bean id="IrpUserRandomAction" class="com.tfs.irp.userRandom.web.IrpUserRandomAction" scope="prototype">
+      <property name="IrpUserRandomService" ref="IrpUserRandomService"></property>  
+      <property name="IrpUserService" ref="IrpUserService"></property>     
+     </bean>
+</beans>	
